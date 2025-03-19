@@ -37,7 +37,7 @@ const AppCard = ({ app, rank, delay = 0 }: AppCardProps) => {
 
   return (
     <div
-      className={`glass-card rounded-2xl overflow-hidden hover-scale subtle-shadow transition-all duration-500 ${
+      className={`glass-card rounded-xl overflow-hidden hover-scale subtle-shadow transition-all duration-500 ${
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
       }`}
     >

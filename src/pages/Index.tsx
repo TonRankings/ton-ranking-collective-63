@@ -20,23 +20,22 @@ const Index = () => {
 
   // Get apps based on selected category
   const appsToShow = selectedCategory === 'all' 
-    ? getTopApps(6) 
+    ? getTopApps(10) 
     : getAppsByCategory(selectedCategory);
 
   // Get most downloaded apps
-  const mostDownloadedApps = getMostDownloadedApps(6);
+  const mostDownloadedApps = getMostDownloadedApps(10);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gray-50">
       <Header />
-      <Hero />
       
-      <main className="app-container pb-20">
-        <div className="pt-24 pb-6">
+      <main className="app-container max-w-3xl mx-auto pb-20">
+        <div className="pt-8 pb-6">
           <div className={`transform transition-all duration-700 ${
             isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
           }`}>
-            <h2 className="section-heading mb-8 text-center">Explore TON App Rankings</h2>
+            <h1 className="text-2xl font-bold mb-6 text-center">TON App Rankings</h1>
             
             {!showSearch ? (
               <div className="max-w-xl mx-auto mb-8">
