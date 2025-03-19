@@ -1,7 +1,6 @@
 
 import { useEffect, useState } from 'react';
 import { categories } from '../lib/data';
-import { Icon } from 'lucide-react';
 import * as LucideIcons from 'lucide-react';
 
 interface CategoryListProps {
@@ -16,11 +15,16 @@ const CategoryList = ({ selectedCategory, onSelectCategory }: CategoryListProps)
     setMounted(true);
   }, []);
 
-  // This is a type assertion to access Lucide icons dynamically
+  // This is a dynamic icon component that renders Lucide icons by name
   const DynamicIcon = ({ name }: { name: string }) => {
-    const LucideIcon = (LucideIcons as Record<string, typeof Icon>)[name.charAt(0).toUpperCase() + name.slice(1)];
-    if (!LucideIcon) return null;
-    return <LucideIcon size={18} />;
+    // First, convert the component to 'unknown' to avoid type conflicts
+    // Then assert it as the proper Record type for icon components
+    const IconComponent = (LucideIcons as unknown as Record<string, React.ComponentType<{ size?: number }>>)[
+      name.charAt(0).toUpperCase() + name.slice(1)
+    ];
+    
+    if (!IconComponent) return null;
+    return <IconComponent size={18} />;
   };
 
   return (
