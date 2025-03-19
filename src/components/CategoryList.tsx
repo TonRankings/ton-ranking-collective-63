@@ -18,7 +18,7 @@ const CategoryList = ({ selectedCategory, onSelectCategory }: CategoryListProps)
 
   // This is a type assertion to access Lucide icons dynamically
   const DynamicIcon = ({ name }: { name: string }) => {
-    const LucideIcon = (LucideIcons as Record<string, Icon>)[name.charAt(0).toUpperCase() + name.slice(1)];
+    const LucideIcon = (LucideIcons as Record<string, typeof Icon>)[name.charAt(0).toUpperCase() + name.slice(1)];
     if (!LucideIcon) return null;
     return <LucideIcon size={18} />;
   };
