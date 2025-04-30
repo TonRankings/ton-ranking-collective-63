@@ -30,7 +30,7 @@ const CategoryList = ({ selectedCategory, onSelectCategory }: CategoryListProps)
 
   return (
     <div className="py-4 mx-auto w-full">
-      <ScrollArea className="w-full" orientation="horizontal">
+      <ScrollArea className="w-full">
         <div className="flex space-x-2 px-2 pb-2 min-w-max">
           <button
             onClick={() => onSelectCategory('all')}
