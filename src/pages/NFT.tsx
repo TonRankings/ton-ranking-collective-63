@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Nft, Wallet, Globe, CreditCard, DollarSign } from 'lucide-react';
+import { ArrowLeft, Image, Wallet, Globe, CreditCard, DollarSign } from 'lucide-react';
 import { getAppsByCategory } from '../lib/data';
 import AppCard from '../components/AppCard';
 import Header from '../components/Header';
@@ -12,7 +12,7 @@ const nftCategories = [
     id: 'marketplaces',
     name: 'Marketplaces',
     description: 'Buy and sell NFTs on TON blockchain',
-    icon: Nft,
+    icon: Image,
     color: 'bg-purple-500'
   },
   {
@@ -124,7 +124,7 @@ const NFT = () => {
               
               {nftApps.length === 0 && (
                 <div className="text-center py-16 glass-card rounded-2xl">
-                  <Nft size={48} className="mx-auto text-muted-foreground mb-4" />
+                  <Image size={48} className="mx-auto text-muted-foreground mb-4" />
                   <h2 className="text-xl font-medium mb-2">No NFT apps found</h2>
                   <p className="text-muted-foreground">
                     There are no NFT apps in this category yet

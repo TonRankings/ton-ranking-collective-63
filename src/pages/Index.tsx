@@ -6,7 +6,7 @@ import Hero from '../components/Hero';
 import CategoryList from '../components/CategoryList';
 import RankingList from '../components/RankingList';
 import SearchBar from '../components/SearchBar';
-import { Gamepad, Wallet, Users, CreditCard, Nft } from 'lucide-react';
+import { Gamepad, Wallet, Users, CreditCard, Image } from 'lucide-react';
 import { categories, getAppsByCategory, getTopApps, getMostDownloadedApps } from '../lib/data';
 
 const Index = () => {
@@ -70,7 +70,7 @@ const Index = () => {
       id: 'nft',
       name: 'NFT',
       description: 'Non-fungible token applications',
-      icon: Nft,
+      icon: Image,
       color: 'bg-purple-500/10',
       iconColor: 'text-purple-500',
       link: '/nft'
