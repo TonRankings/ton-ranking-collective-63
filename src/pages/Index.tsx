@@ -6,7 +6,7 @@ import Hero from '../components/Hero';
 import CategoryList from '../components/CategoryList';
 import RankingList from '../components/RankingList';
 import SearchBar from '../components/SearchBar';
-import { Gamepad } from 'lucide-react';
+import { Gamepad, Wallet, Users, CreditCard, Nft } from 'lucide-react';
 import { categories, getAppsByCategory, getTopApps, getMostDownloadedApps } from '../lib/data';
 
 const Index = () => {
@@ -27,6 +27,55 @@ const Index = () => {
 
   // Get most downloaded apps
   const mostDownloadedApps = getMostDownloadedApps(10);
+
+  // Category page links
+  const categoryPages = [
+    {
+      id: 'games',
+      name: 'Games',
+      description: 'Play games with TON integration',
+      icon: Gamepad,
+      color: 'bg-primary/10',
+      iconColor: 'text-primary',
+      link: '/games'
+    },
+    {
+      id: 'finance',
+      name: 'Finance',
+      description: 'Financial applications with TON',
+      icon: Wallet,
+      color: 'bg-blue-500/10',
+      iconColor: 'text-blue-500',
+      link: '/finance'
+    },
+    {
+      id: 'social',
+      name: 'Social',
+      description: 'Connect with others using TON',
+      icon: Users,
+      color: 'bg-green-500/10',
+      iconColor: 'text-green-500',
+      link: '/social'
+    },
+    {
+      id: 'utilities',
+      name: 'Utilities',
+      description: 'Useful tools with TON integration',
+      icon: CreditCard,
+      color: 'bg-amber-500/10',
+      iconColor: 'text-amber-500',
+      link: '/utilities'
+    },
+    {
+      id: 'nft',
+      name: 'NFT',
+      description: 'Non-fungible token applications',
+      icon: Nft,
+      color: 'bg-purple-500/10',
+      iconColor: 'text-purple-500',
+      link: '/nft'
+    }
+  ];
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -53,23 +102,26 @@ const Index = () => {
               onSelectCategory={setSelectedCategory} 
             />
 
-            {/* Games Section Promo */}
+            {/* Category Pages Section */}
             {selectedCategory === 'all' && (
-              <div className="my-8 glass-card p-6 rounded-xl hover-scale cursor-pointer">
-                <Link to="/games" className="flex items-center justify-between">
-                  <div className="flex items-center">
-                    <div className="bg-primary/10 p-3 rounded-full mr-4">
-                      <Gamepad className="text-primary" size={24} />
+              <div className="my-8 grid grid-cols-1 md:grid-cols-2 gap-4">
+                {categoryPages.map((category) => (
+                  <Link 
+                    key={category.id}
+                    to={category.link} 
+                    className="glass-card p-6 rounded-xl hover-scale cursor-pointer"
+                  >
+                    <div className="flex items-center">
+                      <div className={`${category.color} p-3 rounded-full mr-4`}>
+                        <category.icon className={category.iconColor} size={24} />
+                      </div>
+                      <div className="text-left">
+                        <h3 className="font-semibold text-lg">{category.name}</h3>
+                        <p className="text-muted-foreground">{category.description}</p>
+                      </div>
                     </div>
-                    <div className="text-left">
-                      <h3 className="font-semibold text-lg">Explore Game Categories</h3>
-                      <p className="text-muted-foreground">Browse T2E, P2E, competitive games and more</p>
-                    </div>
-                  </div>
-                  <div className="bg-primary text-primary-foreground px-4 py-2 rounded-full text-sm font-medium">
-                    View Games
-                  </div>
-                </Link>
+                  </Link>
+                ))}
               </div>
             )}
           </div>
