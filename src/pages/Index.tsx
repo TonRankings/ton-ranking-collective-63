@@ -1,10 +1,12 @@
 
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Hero from '../components/Hero';
 import CategoryList from '../components/CategoryList';
 import RankingList from '../components/RankingList';
 import SearchBar from '../components/SearchBar';
+import { Gamepad } from 'lucide-react';
 import { categories, getAppsByCategory, getTopApps, getMostDownloadedApps } from '../lib/data';
 
 const Index = () => {
@@ -50,6 +52,26 @@ const Index = () => {
               selectedCategory={selectedCategory} 
               onSelectCategory={setSelectedCategory} 
             />
+
+            {/* Games Section Promo */}
+            {selectedCategory === 'all' && (
+              <div className="my-8 glass-card p-6 rounded-xl hover-scale cursor-pointer">
+                <Link to="/games" className="flex items-center justify-between">
+                  <div className="flex items-center">
+                    <div className="bg-primary/10 p-3 rounded-full mr-4">
+                      <Gamepad className="text-primary" size={24} />
+                    </div>
+                    <div className="text-left">
+                      <h3 className="font-semibold text-lg">Explore Game Categories</h3>
+                      <p className="text-muted-foreground">Browse T2E, P2E, competitive games and more</p>
+                    </div>
+                  </div>
+                  <div className="bg-primary text-primary-foreground px-4 py-2 rounded-full text-sm font-medium">
+                    View Games
+                  </div>
+                </Link>
+              </div>
+            )}
           </div>
           
           <div className="mt-10">

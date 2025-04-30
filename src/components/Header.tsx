@@ -1,12 +1,13 @@
 
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { Search, X } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
+import { Search, X, Gamepad } from 'lucide-react';
 import SearchBar from './SearchBar';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,13 +24,27 @@ const Header = () => {
       }`}
     >
       <div className="flex items-center justify-between max-w-7xl mx-auto">
-        <Link 
-          to="/" 
-          className="font-semibold text-xl tracking-tight flex items-center gap-2 transition-all"
-        >
-          <span className="text-primary">TON</span>
-          <span>RanKings</span>
-        </Link>
+        <div className="flex items-center gap-6">
+          <Link 
+            to="/" 
+            className="font-semibold text-xl tracking-tight flex items-center gap-2 transition-all"
+          >
+            <span className="text-primary">TON</span>
+            <span>RanKings</span>
+          </Link>
+          
+          <nav className="hidden md:flex space-x-4">
+            <Link 
+              to="/games" 
+              className={`flex items-center gap-2 px-3 py-1.5 rounded-full transition-colors ${
+                location.pathname === '/games' ? 'bg-secondary' : 'hover:bg-muted'
+              }`}
+            >
+              <Gamepad size={16} />
+              <span className="text-sm">Games</span>
+            </Link>
+          </nav>
+        </div>
 
         <div className="flex items-center space-x-4">
           {showSearch ? (
