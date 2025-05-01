@@ -1,5 +1,6 @@
 
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { categories } from '../lib/data';
 import * as LucideIcons from 'lucide-react';
 import { ScrollArea } from "./ui/scroll-area";
@@ -11,6 +12,7 @@ interface CategoryListProps {
 
 const CategoryList = ({ selectedCategory, onSelectCategory }: CategoryListProps) => {
   const [mounted, setMounted] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setMounted(true);
@@ -28,12 +30,33 @@ const CategoryList = ({ selectedCategory, onSelectCategory }: CategoryListProps)
     return <IconComponent size={18} />;
   };
 
+  // Handle category click for navigation
+  const handleCategoryClick = (categoryId: string) => {
+    onSelectCategory(categoryId);
+    
+    // Only navigate if it's not "all"
+    if (categoryId !== 'all') {
+      // Map category ID to route
+      const categoryRouteMap: Record<string, string> = {
+        games: '/games',
+        finance: '/finance',
+        social: '/social',
+        utility: '/utilities',
+        nft: '/nft'
+      };
+      
+      if (categoryRouteMap[categoryId]) {
+        navigate(categoryRouteMap[categoryId]);
+      }
+    }
+  };
+
   return (
     <div className="py-4 mx-auto w-full">
       <ScrollArea className="w-full">
         <div className="flex space-x-2 px-2 pb-2 min-w-max">
           <button
-            onClick={() => onSelectCategory('all')}
+            onClick={() => handleCategoryClick('all')}
             className={`category-button whitespace-nowrap px-4 py-2 rounded-full flex items-center gap-2 transition-all ${
               selectedCategory === 'all'
                 ? 'bg-primary text-white shadow-sm'
@@ -52,7 +75,7 @@ const CategoryList = ({ selectedCategory, onSelectCategory }: CategoryListProps)
           {categories.map((category, index) => (
             <button
               key={category.id}
-              onClick={() => onSelectCategory(category.id)}
+              onClick={() => handleCategoryClick(category.id)}
               className={`category-button whitespace-nowrap px-4 py-2 rounded-full flex items-center gap-2 transition-all ${
                 selectedCategory === category.id
                   ? 'bg-primary text-white shadow-sm'
