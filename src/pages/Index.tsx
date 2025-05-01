@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
 import Hero from '../components/Hero';
 import CategoryList from '../components/CategoryList';
@@ -13,6 +13,7 @@ const Index = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [showSearch, setShowSearch] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setTimeout(() => {
@@ -76,6 +77,11 @@ const Index = () => {
       link: '/nft'
     }
   ];
+  
+  // Handle category click
+  const handleCategoryClick = (link: string) => {
+    navigate(link);
+  };
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -106,9 +112,9 @@ const Index = () => {
             {selectedCategory === 'all' && (
               <div className="my-8 grid grid-cols-1 md:grid-cols-2 gap-4">
                 {categoryPages.map((category) => (
-                  <Link 
+                  <button 
                     key={category.id}
-                    to={category.link} 
+                    onClick={() => handleCategoryClick(category.link)}
                     className="glass-card p-6 rounded-xl hover-scale cursor-pointer"
                   >
                     <div className="flex items-center">
@@ -120,7 +126,7 @@ const Index = () => {
                         <p className="text-muted-foreground">{category.description}</p>
                       </div>
                     </div>
-                  </Link>
+                  </button>
                 ))}
               </div>
             )}

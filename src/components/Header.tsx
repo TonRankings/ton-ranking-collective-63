@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Search, X, Gamepad } from 'lucide-react';
+import { Search, X, Gamepad, Wallet } from 'lucide-react';
 import SearchBar from './SearchBar';
 
 const Header = () => {
@@ -42,6 +42,15 @@ const Header = () => {
             >
               <Gamepad size={16} />
               <span className="text-sm">Games</span>
+            </Link>
+            <Link 
+              to="/finance" 
+              className={`flex items-center gap-2 px-3 py-1.5 rounded-full transition-colors ${
+                location.pathname === '/finance' ? 'bg-secondary' : 'hover:bg-muted'
+              }`}
+            >
+              <Wallet size={16} />
+              <span className="text-sm">Finance</span>
             </Link>
           </nav>
         </div>
