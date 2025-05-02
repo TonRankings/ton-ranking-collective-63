@@ -18,7 +18,6 @@ import NFTContent from './NFT';
 
 const Index = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
-  const [showSearch, setShowSearch] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
   const [activePage, setActivePage] = useState<string | null>(null);
   const navigate = useNavigate();
@@ -108,9 +107,10 @@ const Index = () => {
           <div className={`transform transition-all duration-700 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
             <h1 className="text-2xl font-bold mb-6 text-center">TON App Rankings</h1>
             
-            {!showSearch ? <div className="max-w-xl mx-auto mb-8">
-                <SearchBar fullWidth onFocus={() => setShowSearch(true)} />
-              </div> : null}
+            {/* Always display the search bar regardless of showSearch state */}
+            <div className="max-w-xl mx-auto mb-8">
+                <SearchBar fullWidth autoFocus={false} />
+            </div>
             
             <CategoryList selectedCategory={selectedCategory} onSelectCategory={setSelectedCategory} />
 
@@ -174,3 +174,4 @@ const Index = () => {
 };
 
 export default Index;
+
