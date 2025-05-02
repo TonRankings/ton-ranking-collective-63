@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ArrowLeft, Image, Wallet, Globe, CreditCard, DollarSign } from 'lucide-react';
 import { getAppsByCategory } from '../lib/data';
 import AppCard from '../components/AppCard';
@@ -48,6 +48,7 @@ const nftCategories = [
 const NFT = () => {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [isLoaded, setIsLoaded] = useState(false);
+  const navigate = useNavigate();
   
   // Get all NFT apps
   const nftApps = getAppsByCategory('nft');
@@ -57,19 +58,24 @@ const NFT = () => {
       setIsLoaded(true);
     }, 300);
   }, []);
+
+  const handleBackClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    navigate(-1);
+  };
   
   return (
     <div className="min-h-screen bg-background">
       <Header />
       
       <div className="app-container pt-20 pb-16">
-        <Link
-          to="/"
+        <button
+          onClick={handleBackClick}
           className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground transition-colors mb-6"
         >
           <ArrowLeft size={16} className="mr-2" />
           Back to rankings
-        </Link>
+        </button>
         
         <div 
           className={`transform transition-all duration-500 ${

@@ -1,6 +1,5 @@
-
 import { useState, useEffect } from 'react';
-import { useSearchParams, Link } from 'react-router-dom';
+import { useSearchParams, useNavigate } from 'react-router-dom';
 import { ArrowLeft, Search } from 'lucide-react';
 import { searchApps } from '../lib/data';
 import AppCard from '../components/AppCard';
@@ -10,6 +9,7 @@ const SearchResults = () => {
   const [searchParams] = useSearchParams();
   const query = searchParams.get('q') || '';
   const [isLoaded, setIsLoaded] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setTimeout(() => {
@@ -19,16 +19,21 @@ const SearchResults = () => {
 
   const searchResults = searchApps(query);
 
+  const handleBackClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    navigate(-1);
+  };
+
   return (
     <div className="min-h-screen bg-background pt-16">
       <div className="app-container py-8">
-        <Link
-          to="/"
+        <button
+          onClick={handleBackClick}
           className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground transition-colors mb-6"
         >
           <ArrowLeft size={16} className="mr-2" />
           Back to rankings
-        </Link>
+        </button>
 
         <div 
           className={`max-w-xl mx-auto mb-10 transform transition-all duration-500 ${

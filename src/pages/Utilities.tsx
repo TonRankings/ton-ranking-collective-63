@@ -1,5 +1,6 @@
+
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, House, Globe, CreditCard, Wallet, DollarSign } from 'lucide-react';
 import { getAppsByCategory } from '../lib/data';
 import AppCard from '../components/AppCard';
@@ -37,25 +38,37 @@ const utilityCategories = [{
   icon: DollarSign,
   color: 'bg-indigo-500'
 }];
+
 const Utilities = () => {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [isLoaded, setIsLoaded] = useState(false);
+  const navigate = useNavigate();
 
   // Get all utility apps
   const utilityApps = getAppsByCategory('utility');
+  
   useEffect(() => {
     setTimeout(() => {
       setIsLoaded(true);
     }, 300);
   }, []);
+
+  const handleBackClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    navigate(-1);
+  };
+
   return <div className="min-h-screen bg-background">
       <Header />
       
       <div className="app-container pt-20 pb-16 py-0">
-        <Link to="/" className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground transition-colors mb-6">
+        <button
+          onClick={handleBackClick}
+          className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground transition-colors mb-6"
+        >
           <ArrowLeft size={16} className="mr-2" />
           Back to rankings
-        </Link>
+        </button>
         
         <div className={`transform transition-all duration-500 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
           <h1 className="text-3xl font-bold mb-2">TON Utility Apps</h1>
@@ -102,4 +115,5 @@ const Utilities = () => {
       </div>
     </div>;
 };
+
 export default Utilities;
