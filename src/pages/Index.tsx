@@ -114,24 +114,7 @@ const Index = () => {
             
             <CategoryList selectedCategory={selectedCategory} onSelectCategory={setSelectedCategory} />
 
-            {/* Category Pages Section */}
-            {selectedCategory === 'all' && <div className="my-8 grid grid-cols-1 md:grid-cols-2 gap-4">
-                {categoryPages.map(category => (
-                  <button
-                    key={category.id}
-                    onClick={() => handleCategoryClick(category.id)}
-                    className="glass-card hover-scale rounded-xl overflow-hidden transition-all cursor-pointer flex items-center p-4"
-                  >
-                    <div className={`w-12 h-12 rounded-lg ${category.color} flex items-center justify-center ${category.iconColor} mr-4`}>
-                      <category.icon size={24} />
-                    </div>
-                    <div className="text-left">
-                      <h3 className="font-semibold text-lg">{category.name}</h3>
-                      <p className="text-sm text-muted-foreground">{category.description}</p>
-                    </div>
-                  </button>
-                ))}
-              </div>}
+            {/* Category Pages Section - removed as requested */}
           </div>
         );
     }
@@ -174,4 +157,3 @@ const Index = () => {
 };
 
 export default Index;
-
