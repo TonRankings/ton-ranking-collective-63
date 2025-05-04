@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { ArrowLeft, Gamepad, Trophy, Ticket, Coins, Award } from 'lucide-react';
 import { getAppsByCategory } from '../lib/data';
 import AppCard from '../components/AppCard';
@@ -46,7 +46,11 @@ const gameCategories = [
 ];
 
 const Games = () => {
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const categoryParam = searchParams.get('category');
+  
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(categoryParam);
   const [isLoaded, setIsLoaded] = useState(false);
   
   // Get all game apps

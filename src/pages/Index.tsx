@@ -6,7 +6,7 @@ import Hero from '../components/Hero';
 import CategoryList from '../components/CategoryList';
 import RankingList from '../components/RankingList';
 import SearchBar from '../components/SearchBar';
-import { Gamepad, Wallet, Users, CreditCard, Image, ArrowLeft } from 'lucide-react';
+import { Gamepad, Wallet, Users, CreditCard, Image, ArrowLeft, Ticket, Trophy, Coins, Award } from 'lucide-react';
 import { categories, getAppsByCategory, getTopApps, getMostDownloadedApps } from '../lib/data';
 
 // Import the category page components
@@ -16,10 +16,50 @@ import SocialContent from './Social';
 import UtilitiesContent from './Utilities';
 import NFTContent from './NFT';
 
+// Define game subcategories
+const gameCategories = [
+  {
+    id: 'tap2earn',
+    name: 'Tap to Earn (T2E)',
+    description: 'Simple tap games that reward players with cryptocurrency',
+    icon: Ticket,
+    color: 'bg-amber-500'
+  },
+  {
+    id: 'play2earn',
+    name: 'Play to Earn (P2E)',
+    description: 'More complex games with cryptocurrency rewards for skilled play',
+    icon: Gamepad,
+    color: 'bg-emerald-500'
+  },
+  {
+    id: 'competitive',
+    name: 'Competitive Games',
+    description: 'Games that involve competition between players for rewards',
+    icon: Trophy,
+    color: 'bg-blue-500'
+  },
+  {
+    id: 'strategy',
+    name: 'Strategy Games',
+    description: 'Strategic games involving planning and resource management',
+    icon: Award,
+    color: 'bg-purple-500'
+  },
+  {
+    id: 'collectible',
+    name: 'Collectible Games',
+    description: 'Games focused on collecting digital items and NFTs',
+    icon: Coins,
+    color: 'bg-rose-500'
+  }
+];
+
 const Index = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [isLoaded, setIsLoaded] = useState(false);
   const [activePage, setActivePage] = useState<string | null>(null);
+  const [selectedGameCategory, setSelectedGameCategory] = useState<string | null>(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -77,23 +117,65 @@ const Index = () => {
     link: '/nft'
   }];
 
-  // Handle category click - now displays content instead of navigating
+  // Handle category click for navigation
   const handleCategoryClick = (categoryId: string) => {
     setActivePage(categoryId);
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // Handle game category click
+  const handleGameCategoryClick = (categoryId: string) => {
+    setSelectedGameCategory(categoryId);
+    navigate(`/games?category=${categoryId}`);
   };
 
   // Return to main home view
   const handleReturnToMain = () => {
     setActivePage(null);
     setSelectedCategory('all');
+    setSelectedGameCategory(null);
   };
 
   // Render the appropriate content based on activePage
   const renderCategoryContent = () => {
     switch (activePage) {
       case 'games':
-        return <GamesContent />;
+        return (
+          <div>
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="text-2xl font-semibold">
+                TON Games
+              </h2>
+              <button 
+                onClick={handleReturnToMain}
+                className="text-sm px-4 py-2 bg-secondary rounded-full hover:bg-secondary/80 transition-colors"
+              >
+                Back to rankings
+              </button>
+            </div>
+            
+            {/* Game categories section */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10 animate-stagger">
+              {gameCategories.map((category) => (
+                <button
+                  key={category.id}
+                  onClick={() => handleGameCategoryClick(category.id)}
+                  className="glass-card hover-scale rounded-xl overflow-hidden transition-all duration-300"
+                >
+                  <div className="p-6 flex items-center">
+                    <div className={`w-12 h-12 rounded-lg ${category.color} flex items-center justify-center text-white mr-4`}>
+                      <category.icon size={24} />
+                    </div>
+                    <div className="text-left">
+                      <h3 className="font-semibold text-lg">{category.name}</h3>
+                      <p className="text-sm text-muted-foreground mt-1">{category.description}</p>
+                    </div>
+                  </div>
+                </button>
+              ))}
+            </div>
+          </div>
+        );
       case 'finance':
         return <FinanceContent />;
       case 'social':
