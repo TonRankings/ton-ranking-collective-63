@@ -73,7 +73,7 @@ const Games = () => {
       
       <div className="app-container pt-20 pb-16">
         <Link
-          to="/games"
+          to="/"
           className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground transition-colors mb-6"
         >
           <ArrowLeft size={16} className="mr-2" />
