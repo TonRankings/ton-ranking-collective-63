@@ -58,6 +58,11 @@ const Games = () => {
     }, 300);
   }, []);
 
+  // Return to main games view
+  const handleReturnToMain = () => {
+    setSelectedCategory(null);
+  };
+
   // Filter apps based on selected subcategory
   // For now, we'll just show all game apps since our data doesn't have subcategories
   // In a real app, you would filter them based on a subcategory property
@@ -68,7 +73,7 @@ const Games = () => {
       
       <div className="app-container pt-20 pb-16">
         <Link
-          to="/"
+          to="/games"
           className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground transition-colors mb-6"
         >
           <ArrowLeft size={16} className="mr-2" />
@@ -113,7 +118,7 @@ const Games = () => {
                   {gameCategories.find(cat => cat.id === selectedCategory)?.name}
                 </h2>
                 <button 
-                  onClick={() => setSelectedCategory(null)}
+                  onClick={handleReturnToMain}
                   className="text-sm px-4 py-2 bg-secondary rounded-full hover:bg-secondary/80 transition-colors"
                 >
                   View all categories
