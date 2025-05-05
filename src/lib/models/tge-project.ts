@@ -8,6 +8,12 @@ export interface TGEProject {
   socialEngagement: number;
   totalScore: number;
   tags: string[];
+  trends?: {
+    roadmapScore?: 'up' | 'down' | 'neutral';
+    moralityIndex?: 'up' | 'down' | 'neutral';
+    socialEngagement?: 'up' | 'down' | 'neutral';
+    totalScore?: 'up' | 'down' | 'neutral';
+  };
 }
 
 export type SortField = 'name' | 'tgeDate' | 'roadmapScore' | 'moralityIndex' | 'socialEngagement' | 'totalScore';

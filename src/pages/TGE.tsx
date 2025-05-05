@@ -6,6 +6,7 @@ import { ArrowLeft, Filter, ArrowUp, ArrowDown, Tag } from 'lucide-react';
 import Header from '../components/Header';
 import { Badge } from '../components/ui/badge';
 import { Button } from '../components/ui/button';
+import { ScrollArea } from '../components/ui/scroll-area';
 import {
   Table,
   TableBody,
@@ -160,6 +161,20 @@ const TGE = () => {
     return sort.direction === 'asc' ? <ArrowUp size={16} /> : <ArrowDown size={16} />;
   };
 
+  // Render trend indicator
+  const renderTrendIndicator = (project: TGEProject, field: keyof typeof project.trends) => {
+    if (!project.trends || !project.trends[field]) return null;
+    
+    const trend = project.trends[field];
+    if (trend === 'up') {
+      return <ArrowUp size={14} className="text-green-500 ml-1" />;
+    } else if (trend === 'down') {
+      return <ArrowDown size={14} className="text-red-500 ml-1" />;
+    }
+    
+    return null;
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -201,20 +216,22 @@ const TGE = () => {
                 <DropdownMenuContent align="start" className="w-[280px]">
                   <div className="p-2">
                     <h4 className="mb-2 text-sm font-medium">Tags</h4>
-                    <div className="grid grid-cols-2 gap-2 mb-4">
-                      {availableTags.map(tag => (
-                        <DropdownMenuCheckboxItem
-                          key={tag}
-                          checked={filters.tags.includes(tag)}
-                          onCheckedChange={() => toggleTagFilter(tag)}
-                        >
-                          <div className="flex items-center">
-                            <Tag size={12} className="mr-2" />
-                            {tag}
-                          </div>
-                        </DropdownMenuCheckboxItem>
-                      ))}
-                    </div>
+                    <ScrollArea className="h-[180px]">
+                      <div className="grid grid-cols-2 gap-2 mb-4 p-1">
+                        {availableTags.map(tag => (
+                          <DropdownMenuCheckboxItem
+                            key={tag}
+                            checked={filters.tags.includes(tag)}
+                            onCheckedChange={() => toggleTagFilter(tag)}
+                          >
+                            <div className="flex items-center">
+                              <Tag size={12} className="mr-2" />
+                              {tag}
+                            </div>
+                          </DropdownMenuCheckboxItem>
+                        ))}
+                      </div>
+                    </ScrollArea>
                     
                     <DropdownMenuSeparator />
                     
@@ -246,13 +263,15 @@ const TGE = () => {
               </DropdownMenu>
               
               {filters.tags.length > 0 && (
-                <div className="flex flex-wrap gap-1">
-                  {filters.tags.map(tag => (
-                    <Badge key={tag} variant="outline" className="cursor-pointer" onClick={() => toggleTagFilter(tag)}>
-                      {tag} <span className="ml-1">×</span>
-                    </Badge>
-                  ))}
-                </div>
+                <ScrollArea className="w-[300px] whitespace-nowrap">
+                  <div className="flex gap-1 py-1">
+                    {filters.tags.map(tag => (
+                      <Badge key={tag} variant="outline" className="cursor-pointer flex-shrink-0" onClick={() => toggleTagFilter(tag)}>
+                        {tag} <span className="ml-1">×</span>
+                      </Badge>
+                    ))}
+                  </div>
+                </ScrollArea>
               )}
             </div>
             
@@ -324,10 +343,30 @@ const TGE = () => {
                     <TableRow key={project.id} className="hover:bg-muted/50">
                       <TableCell className="font-medium">{project.name}</TableCell>
                       <TableCell>{format(new Date(project.tgeDate), 'dd MMM yyyy')}</TableCell>
-                      <TableCell className="text-right">{formatScore(project.roadmapScore)}</TableCell>
-                      <TableCell className="text-right">{formatScore(project.moralityIndex)}</TableCell>
-                      <TableCell className="text-right">{formatScore(project.socialEngagement)}</TableCell>
-                      <TableCell className="text-right font-medium">{formatScore(project.totalScore)}</TableCell>
+                      <TableCell className="text-right">
+                        <div className="flex items-center justify-end">
+                          {formatScore(project.roadmapScore)}
+                          {renderTrendIndicator(project, 'roadmapScore')}
+                        </div>
+                      </TableCell>
+                      <TableCell className="text-right">
+                        <div className="flex items-center justify-end">
+                          {formatScore(project.moralityIndex)}
+                          {renderTrendIndicator(project, 'moralityIndex')}
+                        </div>
+                      </TableCell>
+                      <TableCell className="text-right">
+                        <div className="flex items-center justify-end">
+                          {formatScore(project.socialEngagement)}
+                          {renderTrendIndicator(project, 'socialEngagement')}
+                        </div>
+                      </TableCell>
+                      <TableCell className="text-right font-medium">
+                        <div className="flex items-center justify-end">
+                          {formatScore(project.totalScore)}
+                          {renderTrendIndicator(project, 'totalScore')}
+                        </div>
+                      </TableCell>
                       <TableCell>
                         <div className="flex flex-wrap gap-1">
                           {project.tags.map(tag => (
