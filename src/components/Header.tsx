@@ -18,9 +18,12 @@ const Header = () => {
   return <header className={`fixed top-0 left-0 right-0 z-50 py-4 px-6 transition-all duration-300 ${isScrolled ? 'bg-white/80 backdrop-blur-md shadow-sm' : 'bg-transparent'}`}>
       <div className="flex items-center justify-between max-w-7xl mx-auto">
         <div className="flex items-center gap-6">
-          <Link to="/" className="font-semibold text-xl tracking-tight flex items-center gap-2 transition-all hover:opacity-80">
-            <span className="text-primary">TON</span>
-            <span>RanKings</span>
+          <Link to="/" className="font-semibold tracking-tight flex items-center gap-2 transition-all hover:opacity-80">
+            <img 
+              src="/ton-rankings-logo.webp" 
+              alt="TON RanKings" 
+              className="h-8" 
+            />
           </Link>
           
           <nav className="hidden md:flex items-center space-x-4">
