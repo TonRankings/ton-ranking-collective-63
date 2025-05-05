@@ -1,0 +1,103 @@
+
+[
+  {
+    "id": "tge-1",
+    "name": "CryptoQuest",
+    "tgeDate": "2025-06-15",
+    "roadmapScore": 8.4,
+    "moralityIndex": 7.9,
+    "socialEngagement": 9.2,
+    "totalScore": 8.5,
+    "tags": ["GameFi", "P2E", "Metaverse"]
+  },
+  {
+    "id": "tge-2",
+    "name": "DeFiNexus",
+    "tgeDate": "2025-06-22",
+    "roadmapScore": 9.1,
+    "moralityIndex": 8.5,
+    "socialEngagement": 7.8,
+    "totalScore": 8.6,
+    "tags": ["DeFi", "Lending", "Yield"]
+  },
+  {
+    "id": "tge-3",
+    "name": "MetaRealms",
+    "tgeDate": "2025-07-05",
+    "roadmapScore": 7.6,
+    "moralityIndex": 8.2,
+    "socialEngagement": 8.7,
+    "totalScore": 8.1,
+    "tags": ["GameFi", "NFT", "Social"]
+  },
+  {
+    "id": "tge-4",
+    "name": "TONBridge",
+    "tgeDate": "2025-07-12",
+    "roadmapScore": 9.5,
+    "moralityIndex": 9.2,
+    "socialEngagement": 8.9,
+    "totalScore": 9.2,
+    "tags": ["Infrastructure", "Bridge", "DeFi"]
+  },
+  {
+    "id": "tge-5",
+    "name": "SocialFi",
+    "tgeDate": "2025-07-18",
+    "roadmapScore": 8.2,
+    "moralityIndex": 7.6,
+    "socialEngagement": 9.4,
+    "totalScore": 8.4,
+    "tags": ["Social", "Creator", "Content"]
+  },
+  {
+    "id": "tge-6",
+    "name": "TerraForge",
+    "tgeDate": "2025-07-25",
+    "roadmapScore": 7.8,
+    "moralityIndex": 8.0,
+    "socialEngagement": 7.5,
+    "totalScore": 7.8,
+    "tags": ["GameFi", "Strategy", "T2E"]
+  },
+  {
+    "id": "tge-7",
+    "name": "AI Tokens",
+    "tgeDate": "2025-08-02",
+    "roadmapScore": 9.3,
+    "moralityIndex": 8.7,
+    "socialEngagement": 8.4,
+    "totalScore": 8.9,
+    "tags": ["AI", "Data", "Utility"]
+  },
+  {
+    "id": "tge-8",
+    "name": "PrivacyShield",
+    "tgeDate": "2025-08-09",
+    "roadmapScore": 8.9,
+    "moralityIndex": 9.1,
+    "socialEngagement": 7.2,
+    "totalScore": 8.5,
+    "tags": ["Privacy", "Security", "Infrastructure"]
+  },
+  {
+    "id": "tge-9",
+    "name": "TONPay",
+    "tgeDate": "2025-08-15",
+    "roadmapScore": 8.7,
+    "moralityIndex": 8.3,
+    "socialEngagement": 8.8,
+    "totalScore": 8.6,
+    "tags": ["Payments", "DeFi", "Utility"]
+  },
+  {
+    "id": "tge-10",
+    "name": "QuantumDAO",
+    "tgeDate": "2025-08-22",
+    "roadmapScore": 9.0,
+    "moralityIndex": 8.5,
+    "socialEngagement": 9.0,
+    "totalScore": 8.8,
+    "tags": ["DAO", "Governance", "DeFi"]
+  }
+]

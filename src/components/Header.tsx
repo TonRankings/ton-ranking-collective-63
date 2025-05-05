@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Wallet, Gamepad } from 'lucide-react';
+import { Wallet, Gamepad, Tag } from 'lucide-react';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -22,6 +22,28 @@ const Header = () => {
             <span className="text-primary">TON</span>
             <span>RanKings</span>
           </Link>
+          
+          <nav className="hidden md:flex items-center space-x-4">
+            <Link 
+              to="/games" 
+              className={`text-sm hover:text-primary transition-colors ${location.pathname === '/games' ? 'text-primary' : 'text-muted-foreground'}`}
+            >
+              Games
+            </Link>
+            <Link 
+              to="/finance" 
+              className={`text-sm hover:text-primary transition-colors ${location.pathname === '/finance' ? 'text-primary' : 'text-muted-foreground'}`}
+            >
+              Finance
+            </Link>
+            <Link 
+              to="/tge" 
+              className={`text-sm hover:text-primary transition-colors flex items-center ${location.pathname === '/tge' ? 'text-primary' : 'text-muted-foreground'}`}
+            >
+              <Tag size={14} className="mr-1" />
+              TGE Tracker
+            </Link>
+          </nav>
         </div>
       </div>
     </header>;
