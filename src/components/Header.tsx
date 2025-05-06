@@ -20,7 +20,7 @@ const Header = () => {
         <div className="flex items-center gap-6">
           <Link to="/" className="font-semibold tracking-tight flex items-center gap-2 transition-all hover:opacity-80">
             <img 
-              src="/ton-rankings-logo.webp" 
+              src="/lovable-uploads/image-1"
               alt="TON RanKings" 
               className="h-8" 
             />
