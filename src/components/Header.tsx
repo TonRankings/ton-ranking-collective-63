@@ -20,9 +20,9 @@ const Header = () => {
         <div className="flex items-center gap-6">
           <Link to="/" className="font-semibold tracking-tight flex items-center gap-2 transition-all hover:opacity-80">
             <img 
-              src="/lovable-uploads/image-1"
+              src="/lovable-uploads/31c9a471-e00a-4044-af87-4899946c79a3.png"
               alt="TON RanKings" 
-              className="h-8" 
+              className="h-10" 
             />
           </Link>
           
