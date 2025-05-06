@@ -22,7 +22,7 @@ const Header = () => {
             <img 
               src="/lovable-uploads/31c9a471-e00a-4044-af87-4899946c79a3.png"
               alt="TON RanKings" 
-              className="h-10" 
+              className="h-30" 
             />
           </Link>
           
