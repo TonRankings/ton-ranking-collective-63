@@ -120,7 +120,7 @@ const Index = () => {
   return <div className="min-h-screen bg-gray-50">
       <Header />
       
-      <main className="app-container max-w-3xl mx-auto pb-20">
+      <main className="app-container max-w-3xl mx-auto pt-[100px] pb-20">
         <div className="pt-8 pb-6 py-[105px]">
           {activePage && <button onClick={handleReturnToMain} className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground transition-colors mb-6">
               <ArrowLeft size={16} className="mr-2" />
