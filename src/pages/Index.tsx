@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
@@ -15,13 +14,11 @@ import FinanceContent from './Finance';
 import SocialContent from './Social';
 import UtilitiesContent from './Utilities';
 import NFTContent from './NFT';
-
 const Index = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [isLoaded, setIsLoaded] = useState(false);
   const [activePage, setActivePage] = useState<string | null>(null);
   const navigate = useNavigate();
-
   useEffect(() => {
     setTimeout(() => {
       setIsLoaded(true);
@@ -80,7 +77,10 @@ const Index = () => {
   // Handle category click - now displays content instead of navigating
   const handleCategoryClick = (categoryId: string) => {
     setActivePage(categoryId);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
   };
 
   // Return to main home view
@@ -103,8 +103,7 @@ const Index = () => {
       case 'nft':
         return <NFTContent />;
       default:
-        return (
-          <div className={`transform transition-all duration-700 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+        return <div className="">
             <h1 className="text-2xl font-bold mb-6 text-center">TON App Rankings</h1>
             
             {/* Always display the search bar regardless of showSearch state */}
@@ -115,35 +114,26 @@ const Index = () => {
             <CategoryList selectedCategory={selectedCategory} onSelectCategory={setSelectedCategory} />
 
             {/* Category Pages Section - removed as requested */}
-          </div>
-        );
+          </div>;
     }
   };
-
   return <div className="min-h-screen bg-gray-50">
       <Header />
       
       <main className="app-container max-w-3xl mx-auto pb-20">
         <div className="pt-8 pb-6">
-          {activePage && (
-            <button
-              onClick={handleReturnToMain}
-              className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground transition-colors mb-6"
-            >
+          {activePage && <button onClick={handleReturnToMain} className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground transition-colors mb-6">
               <ArrowLeft size={16} className="mr-2" />
               Back to rankings
-            </button>
-          )}
+            </button>}
           
           {renderCategoryContent()}
           
-          {!activePage && (
-            <div className="mt-10">
+          {!activePage && <div className="mt-10">
               <RankingList title={selectedCategory === 'all' ? "Top Rated Apps" : `Top ${categories.find(c => c.id === selectedCategory)?.name || ''} Apps`} description={selectedCategory === 'all' ? "The highest rated TON integrated apps across all categories" : categories.find(c => c.id === selectedCategory)?.description} apps={appsToShow} />
               
               {selectedCategory === 'all' && <RankingList title="Most Popular Apps" description="The most downloaded TON integrated apps by users" apps={mostDownloadedApps} />}
-            </div>
-          )}
+            </div>}
         </div>
       </main>
       
@@ -155,5 +145,4 @@ const Index = () => {
       </footer>
     </div>;
 };
-
 export default Index;
