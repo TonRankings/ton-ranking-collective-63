@@ -104,7 +104,7 @@ const Index = () => {
         return <NFTContent />;
       default:
         return <div className="">
-            <h1 className="text-2xl font-bold mb-6 text-center">TON App Rankings</h1>
+            {/* Title removed from here */}
             
             {/* Always display the search bar regardless of showSearch state */}
             <div className="max-w-xl mx-auto mb-8">
