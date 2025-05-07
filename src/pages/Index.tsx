@@ -122,7 +122,8 @@ const Index = () => {
       
       <main className="app-container max-w-3xl mx-auto pt-[100px] pb-20">
         <div className="pt-8 pb-6 py-[105px]">
-          {activePage && <button onClick={handleReturnToMain} className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground transition-colors mb-6">
+          {activePage && {categoryPages.map((cat) => ( 
+              <button key={cat.id} onClick={() => {handleReturnToMain} className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground transition-colors mb-6">
               <ArrowLeft size={16} className="mr-2" />
               Back to rankings
             </button>}
