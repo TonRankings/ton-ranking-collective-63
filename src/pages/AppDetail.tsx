@@ -54,19 +54,23 @@ const AppDetail = () => {
       });
     }
   };
+  
+  const handleGoBack = () => {
+    navigate(-1); // Navigate back to the previous page in history
+  };
 
   if (!app) return null;
 
   return (
     <div className="min-h-screen bg-background pt-16">
       <div className="app-container py-8">
-        <Link
-          to="/"
+        <button
+          onClick={handleGoBack}
           className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground transition-colors mb-6"
         >
           <ArrowLeft size={16} className="mr-2" />
           Back to rankings
-        </Link>
+        </button>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div 
