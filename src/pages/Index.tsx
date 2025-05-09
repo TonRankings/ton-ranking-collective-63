@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
@@ -14,11 +15,13 @@ import FinanceContent from './Finance';
 import SocialContent from './Social';
 import UtilitiesContent from './Utilities';
 import NFTContent from './NFT';
+
 const Index = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [isLoaded, setIsLoaded] = useState(false);
   const [activePage, setActivePage] = useState<string | null>(null);
   const navigate = useNavigate();
+  
   useEffect(() => {
     setTimeout(() => {
       setIsLoaded(true);
@@ -117,6 +120,7 @@ const Index = () => {
           </div>;
     }
   };
+
   return <div className="min-h-screen bg-gray-50">
       <Header />
       
@@ -129,11 +133,19 @@ const Index = () => {
           
           {renderCategoryContent()}
           
-          {!activePage && <div className="mt-10">
-              <RankingList title={selectedCategory === 'all' ? "Top Rated Apps" : `Top ${categories.find(c => c.id === selectedCategory)?.name || ''} Apps`} description={selectedCategory === 'all' ? "The highest rated TON integrated apps across all categories" : categories.find(c => c.id === selectedCategory)?.description} apps={appsToShow} />
-              
-              {selectedCategory === 'all' && <RankingList title="Most Popular Apps" description="The most downloaded TON integrated apps by users" apps={mostDownloadedApps} />}
-            </div>}
+          {!activePage && (
+            selectedCategory === 'games' 
+            ? <GamesContent /> 
+            : <div className="mt-10">
+                <RankingList 
+                  title={selectedCategory === 'all' ? "Top Rated Apps" : `Top ${categories.find(c => c.id === selectedCategory)?.name || ''} Apps`} 
+                  description={selectedCategory === 'all' ? "The highest rated TON integrated apps across all categories" : categories.find(c => c.id === selectedCategory)?.description} 
+                  apps={appsToShow} 
+                />
+                
+                {selectedCategory === 'all' && <RankingList title="Most Popular Apps" description="The most downloaded TON integrated apps by users" apps={mostDownloadedApps} />}
+              </div>
+          )}
         </div>
       </main>
       
@@ -145,4 +157,5 @@ const Index = () => {
       </footer>
     </div>;
 };
+
 export default Index;
