@@ -1,6 +1,6 @@
+
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { ArrowLeft, Wallet, CreditCard, Bitcoin, DollarSign, Euro } from 'lucide-react';
+import { Wallet, CreditCard, Bitcoin, DollarSign, Euro } from 'lucide-react';
 import { getAppsByCategory } from '../lib/data';
 import AppCard from '../components/AppCard';
 import Header from '../components/Header';
@@ -49,14 +49,7 @@ const Finance = () => {
     }, 300);
   }, []);
   return <div className="min-h-screen bg-background">
-      <Header />
-      
       <div className="app-container pt-20 pb-16 py-[100px]">
-        <Link to="/" className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground transition-colors mb-6">
-          <ArrowLeft size={16} className="mr-2" />
-          Back to rankings
-        </Link>
-        
         <div className={`transform transition-all duration-500 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
           <h1 className="text-3xl font-bold mb-2">TON Finance Apps</h1>
           <p className="text-muted-foreground mb-8">

@@ -1,7 +1,6 @@
 
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { ArrowLeft, Users, Globe, Linkedin, Twitter, Instagram } from 'lucide-react';
+import { Users, Globe, Linkedin, Twitter, Instagram } from 'lucide-react';
 import { getAppsByCategory } from '../lib/data';
 import AppCard from '../components/AppCard';
 import Header from '../components/Header';
@@ -60,17 +59,7 @@ const Social = () => {
   
   return (
     <div className="min-h-screen bg-background">
-      <Header />
-      
       <div className="app-container pt-20 pb-16">
-        <Link
-          to="/"
-          className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground transition-colors mb-6"
-        >
-          <ArrowLeft size={16} className="mr-2" />
-          Back to rankings
-        </Link>
-        
         <div 
           className={`transform transition-all duration-500 ${
             isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
