@@ -1,6 +1,5 @@
 
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { categories } from '../lib/data';
 import * as LucideIcons from 'lucide-react';
 import { ScrollArea } from "./ui/scroll-area";
@@ -12,7 +11,6 @@ interface CategoryListProps {
 
 const CategoryList = ({ selectedCategory, onSelectCategory }: CategoryListProps) => {
   const [mounted, setMounted] = useState(false);
-  const navigate = useNavigate();
 
   useEffect(() => {
     setMounted(true);
@@ -30,25 +28,9 @@ const CategoryList = ({ selectedCategory, onSelectCategory }: CategoryListProps)
     return <IconComponent size={18} />;
   };
 
-  // Handle category click for navigation
+  // Handle category click - no longer navigates
   const handleCategoryClick = (categoryId: string) => {
     onSelectCategory(categoryId);
-    
-    // Only navigate if it's not "all"
-    if (categoryId !== 'all') {
-      // Map category ID to route
-      const categoryRouteMap: Record<string, string> = {
-        games: '/games',
-        finance: '/finance',
-        social: '/social',
-        utility: '/utilities',
-        nft: '/nft'
-      };
-      
-      if (categoryRouteMap[categoryId]) {
-        navigate(categoryRouteMap[categoryId]);
-      }
-    }
   };
 
   return (
