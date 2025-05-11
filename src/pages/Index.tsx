@@ -44,7 +44,7 @@ const Index = () => {
   const renderCategoryContent = () => {
     if (selectedCategory === 'all') {
       return (
-        <div className="mt-10">
+        <div className="mt-6">
           <RankingList 
             title="Top Rated Apps"
             description="The highest rated TON integrated apps across all categories"
@@ -71,7 +71,7 @@ const Index = () => {
           return <NFTContent />;
         default:
           return (
-            <div className="mt-10">
+            <div className="mt-6">
               <RankingList 
                 title={`Top ${categories.find(c => c.id === selectedCategory)?.name || ''} Apps`}
                 description={categories.find(c => c.id === selectedCategory)?.description}
@@ -87,11 +87,11 @@ const Index = () => {
     <div className="min-h-screen bg-gray-50">
       <Header />
       
-      <main className="app-container max-w-3xl mx-auto pt-[100px] pb-20">
-        <div className="pt-8 pb-6 py-[105px]">
+      <main className="app-container max-w-3xl mx-auto pt-20 pb-20">
+        <div className="pt-4 pb-4">
           <div className="">
             {/* Always display the search bar */}
-            <div className="max-w-xl mx-auto mb-8">
+            <div className="max-w-xl mx-auto mb-6">
                 <SearchBar fullWidth autoFocus={false} />
             </div>
             
