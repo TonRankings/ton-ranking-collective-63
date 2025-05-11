@@ -66,13 +66,13 @@ const Social = () => {
           }`}
         >
           <h1 className="text-3xl font-bold mb-2">TON Social Apps</h1>
-          <p className="text-muted-foreground mb-8">
+          <p className="text-muted-foreground mb-6">
             Explore different types of social applications with TON blockchain integration
           </p>
           
           {/* Social categories section */}
           {!selectedCategory ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10 animate-stagger">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8 animate-stagger">
               {socialCategories.map((category) => (
                 <button
                   key={category.id}

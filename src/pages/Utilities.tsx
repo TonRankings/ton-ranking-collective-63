@@ -52,15 +52,15 @@ const Utilities = () => {
   }, []);
 
   return <div className="min-h-screen bg-background">
-      <div className="app-container pt-20 pb-16 py-0">
+      <div className="app-container pt-20 pb-16">
         <div className={`transform transition-all duration-500 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
           <h1 className="text-3xl font-bold mb-2">TON Utility Apps</h1>
-          <p className="text-muted-foreground mb-8">
+          <p className="text-muted-foreground mb-6">
             Explore different types of utility applications with TON blockchain integration
           </p>
           
           {/* Utility categories section */}
-          {!selectedCategory ? <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10 animate-stagger">
+          {!selectedCategory ? <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8 animate-stagger">
               {utilityCategories.map(category => <button key={category.id} onClick={() => setSelectedCategory(category.id)} className="glass-card hover-scale rounded-xl overflow-hidden transition-all duration-300">
                   <div className="p-6 flex items-center">
                     <div className={`w-12 h-12 rounded-lg ${category.color} flex items-center justify-center text-white mr-4`}>
