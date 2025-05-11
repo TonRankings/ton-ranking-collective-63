@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { ArrowLeft, Image, Wallet, Globe, CreditCard, DollarSign } from 'lucide-react';
+import { Image, Wallet, Globe, CreditCard, DollarSign } from 'lucide-react';
 import { getAppsByCategory } from '../lib/data';
 import AppCard from '../components/AppCard';
 import Header from '../components/Header';
@@ -58,25 +58,12 @@ const NFT = () => {
       setIsLoaded(true);
     }, 300);
   }, []);
-
-  const handleBackClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    navigate(-1);
-  };
   
   return (
     <div className="min-h-screen bg-background">
       <Header />
       
       <div className="app-container pt-20 pb-16">
-        <button
-          onClick={handleBackClick}
-          className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground transition-colors mb-6"
-        >
-          <ArrowLeft size={16} className="mr-2" />
-          Back to rankings
-        </button>
-        
         <div 
           className={`transform transition-all duration-500 ${
             isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
