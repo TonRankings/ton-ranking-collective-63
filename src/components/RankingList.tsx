@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import { App } from '../lib/data';
 import { Separator } from './ui/separator';
+import { Download } from 'lucide-react';
 
 interface RankingListProps {
   title: string;
@@ -84,8 +85,14 @@ const RankingList = ({ title, description, apps }: RankingListProps) => {
                 <p className="text-sm text-muted-foreground">{app.category.charAt(0).toUpperCase() + app.category.slice(1)}</p>
               </div>
               
-              <div className="flex items-center bg-secondary/50 rounded-full px-2 py-0.5 ml-2">
-                <span className="text-sm font-medium">{app.rating.toFixed(1)}</span>
+              <div className="flex items-center gap-3">
+                <div className="flex items-center gap-1 text-muted-foreground">
+                  <Download size={14} />
+                  <span className="text-xs">{(app.downloads / 1000).toFixed(0)}k</span>
+                </div>
+                <div className="flex items-center bg-secondary/50 rounded-full px-2 py-0.5">
+                  <span className="text-sm font-medium">{app.rating.toFixed(1)}</span>
+                </div>
               </div>
             </div>
             
