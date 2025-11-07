@@ -1,5 +1,6 @@
 
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { App } from '../lib/data';
 import { Separator } from './ui/separator';
 import { Download } from 'lucide-react';
@@ -12,6 +13,7 @@ interface RankingListProps {
 
 const RankingList = ({ title, description, apps }: RankingListProps) => {
   const [visible, setVisible] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -67,7 +69,10 @@ const RankingList = ({ title, description, apps }: RankingListProps) => {
       <div className="bg-white rounded-xl shadow-sm">
         {apps.map((app, index) => (
           <div key={app.id}>
-            <div className="flex items-center py-4 px-4">
+            <div 
+              onClick={() => navigate(`/app/${app.id}`)}
+              className="flex items-center py-4 px-4 cursor-pointer hover:bg-muted/30 transition-colors"
+            >
               <div className="w-10 text-center font-semibold text-lg text-muted-foreground mr-4">
                 {index + 1}
               </div>
