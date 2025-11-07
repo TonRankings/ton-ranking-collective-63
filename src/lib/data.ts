@@ -185,5 +185,5 @@ export const searchApps = (query: string): App[] => {
   return apps.filter(
     app => app.name.toLowerCase().includes(lowerCaseQuery) || 
            app.description.toLowerCase().includes(lowerCaseQuery)
-  );
+  ).sort((a, b) => b.rating - a.rating);
 };
