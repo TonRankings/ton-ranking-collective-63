@@ -172,7 +172,7 @@ export const getTopApps = (limit: number = 5): App[] => {
   return [...apps].sort((a, b) => b.rating - a.rating).slice(0, limit);
 };
 
-export const getMostDownloadedApps = (limit: number = 5): App[] => {
+export const getTopRatedApps = (limit: number = 5): App[] => {
   return [...apps].sort((a, b) => b.rating - a.rating).slice(0, limit);
 };
 

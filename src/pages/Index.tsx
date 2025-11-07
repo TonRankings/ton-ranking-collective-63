@@ -5,7 +5,7 @@ import Header from '../components/Header';
 import CategoryList from '../components/CategoryList';
 import RankingList from '../components/RankingList';
 import SearchBar from '../components/SearchBar';
-import { categories, getAppsByCategory, getTopApps, getMostDownloadedApps } from '../lib/data';
+import { categories, getAppsByCategory, getTopApps, getTopRatedApps } from '../lib/data';
 
 // Import the category page components
 import GamesContent from './Games';
@@ -28,8 +28,8 @@ const Index = () => {
   // Get apps based on selected category
   const appsToShow = selectedCategory === 'all' ? getTopApps(10) : getAppsByCategory(selectedCategory);
 
-  // Get most downloaded apps
-  const mostDownloadedApps = getMostDownloadedApps(10);
+  // Get top rated apps
+  const topRatedApps = getTopRatedApps(10);
 
   // Handle category selection
   const handleCategorySelect = (categoryId: string) => {
@@ -51,9 +51,9 @@ const Index = () => {
             apps={appsToShow} 
           />
           <RankingList 
-            title="Most Popular Apps" 
-            description="The most downloaded TON integrated apps by users" 
-            apps={mostDownloadedApps} 
+            title="Top Rated Apps" 
+            description="Apps with the highest ratings across all categories" 
+            apps={topRatedApps} 
           />
         </div>
       );
