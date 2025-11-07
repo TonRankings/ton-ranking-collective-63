@@ -165,7 +165,7 @@ export const apps: App[] = [
 ];
 
 export const getAppsByCategory = (categoryId: string): App[] => {
-  return apps.filter(app => app.category === categoryId);
+  return apps.filter(app => app.category === categoryId).sort((a, b) => b.rating - a.rating);
 };
 
 export const getTopApps = (limit: number = 5): App[] => {
