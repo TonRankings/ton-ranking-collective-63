@@ -173,7 +173,7 @@ export const getTopApps = (limit: number = 5): App[] => {
 };
 
 export const getMostDownloadedApps = (limit: number = 5): App[] => {
-  return [...apps].sort((a, b) => b.downloads - a.downloads).slice(0, limit);
+  return [...apps].sort((a, b) => b.rating - a.rating).slice(0, limit);
 };
 
 export const getAppById = (id: string): App | undefined => {
