@@ -167,6 +167,72 @@ export const apps: App[] = [
     imageUrl: "https://tonconnect.org/assets/preview.png",
     tonIntegration: "wallet",
     url: "https://t.me/tonconnectbot"
+  },
+  {
+    id: "11",
+    name: "Catizen",
+    description: "Play-to-earn cat game on TON blockchain",
+    category: "projects",
+    rating: 4.6,
+    downloads: 850000,
+    imageUrl: "https://placehold.co/400x400/8B5CF6/FFFFFF/png?text=Catizen",
+    tonIntegration: "multiple",
+    url: "https://t.me/catizenbot"
+  },
+  {
+    id: "12",
+    name: "Hamster Kombat",
+    description: "Tap-to-earn game with TON integration",
+    category: "projects",
+    rating: 4.7,
+    downloads: 1500000,
+    imageUrl: "https://placehold.co/400x400/F59E0B/FFFFFF/png?text=Hamster",
+    tonIntegration: "multiple",
+    url: "https://t.me/hamster_kombat_bot"
+  },
+  {
+    id: "13",
+    name: "TON Station",
+    description: "Web3 gaming hub on TON",
+    category: "projects",
+    rating: 4.4,
+    downloads: 420000,
+    imageUrl: "https://placehold.co/400x400/10B981/FFFFFF/png?text=TON+Station",
+    tonIntegration: "multiple",
+    url: "https://t.me/tonstationbot"
+  },
+  {
+    id: "14",
+    name: "STON.fi",
+    description: "Decentralized exchange and DeFi platform",
+    category: "projects",
+    rating: 4.5,
+    downloads: 680000,
+    imageUrl: "https://placehold.co/400x400/3B82F6/FFFFFF/png?text=STON.fi",
+    tonIntegration: "multiple",
+    url: "https://t.me/stonfibot"
+  },
+  {
+    id: "15",
+    name: "Tegro",
+    description: "NFT marketplace and DeFi ecosystem",
+    category: "projects",
+    rating: 4.3,
+    downloads: 320000,
+    imageUrl: "https://placehold.co/400x400/EF4444/FFFFFF/png?text=Tegro",
+    tonIntegration: "nft",
+    url: "https://t.me/tegrobot"
+  },
+  {
+    id: "16",
+    name: "Tonkeeper Pro",
+    description: "Advanced TON wallet with DeFi features",
+    category: "projects",
+    rating: 4.8,
+    downloads: 920000,
+    imageUrl: "https://placehold.co/400x400/06B6D4/FFFFFF/png?text=Tonkeeper",
+    tonIntegration: "wallet",
+    url: "https://t.me/tonkeeperbot"
   }
 ];
 
