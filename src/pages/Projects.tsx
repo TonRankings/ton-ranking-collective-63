@@ -1,8 +1,6 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight, Calendar, TrendingUp } from 'lucide-react';
 import Header from '../components/Header';
-import RankingList from '../components/RankingList';
-import { getAppsByCategory } from '../lib/data';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
 import { Badge } from '../components/ui/badge';
 import { Button } from '../components/ui/button';
@@ -10,8 +8,6 @@ import tgeProjectsData from '../lib/tge-projects.json';
 import { TGEProject } from '../lib/models/tge-project';
 
 const Projects = () => {
-  const projectApps = getAppsByCategory('projects');
-  
   // Get upcoming TGEs (next 5)
   const upcomingTGEs = (tgeProjectsData as TGEProject[])
     .sort((a, b) => new Date(a.tgeDate).getTime() - new Date(b.tgeDate).getTime())
@@ -91,12 +87,6 @@ const Projects = () => {
             </div>
           </CardContent>
         </Card>
-
-        <RankingList 
-          title="Featured Projects"
-          description="Top projects in the TON ecosystem"
-          apps={projectApps}
-        />
       </main>
     </div>
   );
