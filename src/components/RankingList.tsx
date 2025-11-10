@@ -71,7 +71,7 @@ const RankingList = ({ title, description, apps }: RankingListProps) => {
           <div key={app.id}>
             <div 
               onClick={() => navigate(`/app/${app.id}`)}
-              className="flex items-center py-4 px-4 cursor-pointer hover:bg-muted/30 transition-all hover-scale rounded-lg"
+              className="flex items-center py-4 px-4 cursor-pointer hover:bg-muted/30 hover:shadow-lg transition-all hover-scale rounded-lg"
             >
               <div className="w-10 text-center font-semibold text-lg text-muted-foreground mr-4">
                 {index + 1}
