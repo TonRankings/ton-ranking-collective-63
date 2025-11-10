@@ -13,6 +13,7 @@ import FinanceContent from './Finance';
 import SocialContent from './Social';
 import UtilitiesContent from './Utilities';
 import NFTContent from './NFT';
+import ProjectsContent from './Projects';
 
 const Index = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -69,6 +70,8 @@ const Index = () => {
           return <UtilitiesContent />;
         case 'nft':
           return <NFTContent />;
+        case 'projects':
+          return <ProjectsContent />;
         default:
           return (
             <div className="mt-6">

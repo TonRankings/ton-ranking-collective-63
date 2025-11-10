@@ -13,6 +13,7 @@ import Finance from "./pages/Finance";
 import Social from "./pages/Social";
 import Utilities from "./pages/Utilities";
 import NFT from "./pages/NFT";
+import Projects from "./pages/Projects";
 import TGE from "./pages/TGE";
 
 const queryClient = new QueryClient();
@@ -32,6 +33,7 @@ const App = () => (
           <Route path="/social" element={<Social />} />
           <Route path="/utilities" element={<Utilities />} />
           <Route path="/nft" element={<NFT />} />
+          <Route path="/projects" element={<Projects />} />
           <Route path="/tge" element={<TGE />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

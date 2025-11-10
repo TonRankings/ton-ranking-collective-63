@@ -48,6 +48,12 @@ export const categories: Category[] = [
     name: "NFT",
     description: "Non-fungible token applications",
     icon: "image"
+  },
+  {
+    id: "projects",
+    name: "Projects",
+    description: "Upcoming and active TON projects",
+    icon: "rocket"
   }
 ];
 
