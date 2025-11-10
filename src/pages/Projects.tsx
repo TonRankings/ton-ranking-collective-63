@@ -1,11 +1,53 @@
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Calendar, TrendingUp } from 'lucide-react';
+import { ArrowRight, Calendar, TrendingUp, Clock } from 'lucide-react';
+import { differenceInDays, differenceInHours, differenceInMinutes, isPast } from 'date-fns';
 import Header from '../components/Header';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
 import { Badge } from '../components/ui/badge';
 import { Button } from '../components/ui/button';
 import tgeProjectsData from '../lib/tge-projects.json';
 import { TGEProject } from '../lib/models/tge-project';
+
+const CountdownTimer = ({ targetDate }: { targetDate: string }) => {
+  const [timeLeft, setTimeLeft] = useState('');
+
+  useEffect(() => {
+    const updateCountdown = () => {
+      const now = new Date();
+      const target = new Date(targetDate);
+      
+      if (isPast(target)) {
+        setTimeLeft('Launched');
+        return;
+      }
+
+      const days = differenceInDays(target, now);
+      const hours = differenceInHours(target, now) % 24;
+      const minutes = differenceInMinutes(target, now) % 60;
+
+      if (days > 0) {
+        setTimeLeft(`${days}d ${hours}h`);
+      } else if (hours > 0) {
+        setTimeLeft(`${hours}h ${minutes}m`);
+      } else {
+        setTimeLeft(`${minutes}m`);
+      }
+    };
+
+    updateCountdown();
+    const interval = setInterval(updateCountdown, 60000); // Update every minute
+
+    return () => clearInterval(interval);
+  }, [targetDate]);
+
+  return (
+    <div className="flex items-center gap-1 text-xs font-medium text-primary">
+      <Clock className="h-3 w-3" />
+      {timeLeft}
+    </div>
+  );
+};
 
 const Projects = () => {
   // Get upcoming TGEs (next 5)
@@ -66,7 +108,7 @@ const Projects = () => {
                       ))}
                     </div>
                     <p className="text-sm text-muted-foreground">
-                      TGE Date: {new Date(project.tgeDate).toLocaleDateString('en-US', {
+                      {new Date(project.tgeDate).toLocaleDateString('en-US', {
                         month: 'short',
                         day: 'numeric',
                         year: 'numeric'
@@ -74,6 +116,9 @@ const Projects = () => {
                     </p>
                   </div>
                   <div className="flex items-center gap-4">
+                    <div className="text-right">
+                      <CountdownTimer targetDate={project.tgeDate} />
+                    </div>
                     <div className="text-right">
                       <div className="flex items-center gap-1 text-sm font-medium">
                         <TrendingUp className="h-4 w-4 text-primary" />
