@@ -10,7 +10,6 @@ import AppDetail from "./pages/AppDetail";
 import SearchResults from "./pages/SearchResults";
 import Games from "./pages/Games";
 import Finance from "./pages/Finance";
-import Social from "./pages/Social";
 import Utilities from "./pages/Utilities";
 import NFT from "./pages/NFT";
 import Projects from "./pages/Projects";
@@ -30,7 +29,6 @@ const App = () => (
           <Route path="/search" element={<SearchResults />} />
           <Route path="/games" element={<Games />} />
           <Route path="/finance" element={<Finance />} />
-          <Route path="/social" element={<Social />} />
           <Route path="/utilities" element={<Utilities />} />
           <Route path="/nft" element={<NFT />} />
           <Route path="/projects" element={<Projects />} />

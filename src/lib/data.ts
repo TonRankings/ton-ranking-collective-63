@@ -32,12 +32,6 @@ export const categories: Category[] = [
     icon: "wallet"
   },
   {
-    id: "social",
-    name: "Social",
-    description: "Connect with others using TON",
-    icon: "users"
-  },
-  {
     id: "utility",
     name: "Utilities",
     description: "Useful tools with TON integration",

@@ -10,7 +10,6 @@ import { categories, getAppsByCategory, getTopApps, getTopRatedApps } from '../l
 // Import the category page components
 import GamesContent from './Games';
 import FinanceContent from './Finance';
-import SocialContent from './Social';
 import UtilitiesContent from './Utilities';
 import NFTContent from './NFT';
 import ProjectsContent from './Projects';
@@ -64,8 +63,6 @@ const Index = () => {
           return <GamesContent />;
         case 'finance':
           return <FinanceContent />;
-        case 'social':
-          return <SocialContent />;
         case 'utility':
           return <UtilitiesContent />;
         case 'nft':
