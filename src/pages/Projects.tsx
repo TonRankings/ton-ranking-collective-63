@@ -182,6 +182,32 @@ const Projects = () => {
             </div>
           </CardHeader>
           <CardContent>
+            {/* Color Legend */}
+            <div className="mb-4 p-3 rounded-lg bg-muted/50 border">
+              <div className="flex items-center gap-2 mb-2">
+                <div className="h-2 w-2 rounded-full bg-muted-foreground" />
+                <span className="text-xs font-medium text-muted-foreground">Launch Urgency</span>
+              </div>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
+                <div className="flex items-center gap-2">
+                  <div className="h-2 w-8 rounded-full bg-red-500" />
+                  <span>0-3 days</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="h-2 w-8 rounded-full bg-orange-500" />
+                  <span>4-7 days</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="h-2 w-8 rounded-full bg-yellow-500" />
+                  <span>8-14 days</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="h-2 w-8 rounded-full bg-primary" />
+                  <span>15+ days</span>
+                </div>
+              </div>
+            </div>
+
             {/* Filters and Sorting */}
             <div className="flex flex-wrap items-center gap-3 mb-4 pb-4 border-b">
               <div className="flex items-center gap-2">
