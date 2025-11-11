@@ -1,11 +1,13 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Calendar, TrendingUp, Clock } from 'lucide-react';
+import { ArrowRight, Calendar, TrendingUp, Clock, Filter, ArrowUpDown } from 'lucide-react';
 import { differenceInDays, differenceInHours, differenceInMinutes, isPast } from 'date-fns';
 import Header from '../components/Header';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
 import { Badge } from '../components/ui/badge';
 import { Button } from '../components/ui/button';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '../components/ui/tooltip';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select';
 import { Progress } from '../components/ui/progress';
 import tgeProjectsData from '../lib/tge-projects.json';
 import { TGEProject } from '../lib/models/tge-project';
@@ -52,6 +54,8 @@ const CountdownTimer = ({ targetDate }: { targetDate: string }) => {
 
 const LaunchProgress = ({ targetDate }: { targetDate: string }) => {
   const [progress, setProgress] = useState(0);
+  const [daysRemaining, setDaysRemaining] = useState(0);
+  const [colorClass, setColorClass] = useState('');
 
   useEffect(() => {
     const updateProgress = () => {
@@ -61,12 +65,27 @@ const LaunchProgress = ({ targetDate }: { targetDate: string }) => {
       
       if (isPast(target)) {
         setProgress(100);
+        setDaysRemaining(0);
+        setColorClass('[&>div]:bg-green-500');
         return;
       }
 
-      const daysRemaining = differenceInDays(target, now);
-      const progressValue = Math.max(0, Math.min(100, ((totalDays - daysRemaining) / totalDays) * 100));
+      const days = differenceInDays(target, now);
+      setDaysRemaining(days);
+      
+      const progressValue = Math.max(0, Math.min(100, ((totalDays - days) / totalDays) * 100));
       setProgress(progressValue);
+      
+      // Color coding based on urgency
+      if (days <= 3) {
+        setColorClass('[&>div]:bg-red-500'); // Imminent (0-3 days)
+      } else if (days <= 7) {
+        setColorClass('[&>div]:bg-orange-500'); // Very soon (4-7 days)
+      } else if (days <= 14) {
+        setColorClass('[&>div]:bg-yellow-500'); // Soon (8-14 days)
+      } else {
+        setColorClass('[&>div]:bg-primary'); // Normal (15+ days)
+      }
     };
 
     updateProgress();
@@ -75,14 +94,59 @@ const LaunchProgress = ({ targetDate }: { targetDate: string }) => {
     return () => clearInterval(interval);
   }, [targetDate]);
 
-  return <Progress value={progress} className="h-2" />;
+  const tooltipText = isPast(new Date(targetDate)) 
+    ? 'Launched' 
+    : `${daysRemaining} day${daysRemaining !== 1 ? 's' : ''} remaining (${Math.round(progress)}%)`;
+
+  return (
+    <TooltipProvider>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <div className="cursor-help">
+            <Progress value={progress} className={`h-2 ${colorClass}`} />
+          </div>
+        </TooltipTrigger>
+        <TooltipContent>
+          <p>{tooltipText}</p>
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
+  );
 };
 
 const Projects = () => {
-  // Get upcoming TGEs (next 5)
-  const upcomingTGEs = (tgeProjectsData as TGEProject[])
-    .sort((a, b) => new Date(a.tgeDate).getTime() - new Date(b.tgeDate).getTime())
-    .slice(0, 5);
+  const [sortBy, setSortBy] = useState<'date' | 'score'>('date');
+  const [filterTag, setFilterTag] = useState<string>('all');
+
+  // Get all unique tags
+  const allTags = useMemo(() => {
+    const tags = new Set<string>();
+    (tgeProjectsData as TGEProject[]).forEach(project => {
+      project.tags.forEach(tag => tags.add(tag));
+    });
+    return Array.from(tags).sort();
+  }, []);
+
+  // Get upcoming TGEs with filtering and sorting
+  const upcomingTGEs = useMemo(() => {
+    let filtered = [...(tgeProjectsData as TGEProject[])];
+    
+    // Apply tag filter
+    if (filterTag !== 'all') {
+      filtered = filtered.filter(project => project.tags.includes(filterTag));
+    }
+    
+    // Apply sorting
+    filtered.sort((a, b) => {
+      if (sortBy === 'date') {
+        return new Date(a.tgeDate).getTime() - new Date(b.tgeDate).getTime();
+      } else {
+        return b.totalScore - a.totalScore;
+      }
+    });
+    
+    return filtered.slice(0, 5);
+  }, [filterTag, sortBy]);
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -118,6 +182,37 @@ const Projects = () => {
             </div>
           </CardHeader>
           <CardContent>
+            {/* Filters and Sorting */}
+            <div className="flex flex-wrap items-center gap-3 mb-4 pb-4 border-b">
+              <div className="flex items-center gap-2">
+                <Filter className="h-4 w-4 text-muted-foreground" />
+                <Select value={filterTag} onValueChange={setFilterTag}>
+                  <SelectTrigger className="w-[180px]">
+                    <SelectValue placeholder="Filter by tag" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">All Tags</SelectItem>
+                    {allTags.map(tag => (
+                      <SelectItem key={tag} value={tag}>{tag}</SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+              
+              <div className="flex items-center gap-2">
+                <ArrowUpDown className="h-4 w-4 text-muted-foreground" />
+                <Select value={sortBy} onValueChange={(value) => setSortBy(value as 'date' | 'score')}>
+                  <SelectTrigger className="w-[180px]">
+                    <SelectValue placeholder="Sort by" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="date">Launch Date</SelectItem>
+                    <SelectItem value="score">Total Score</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+            </div>
+
             <div className="space-y-3">
               {upcomingTGEs.map((project) => (
                 <Link
