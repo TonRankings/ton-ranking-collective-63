@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Calendar, TrendingUp, Clock, Filter, ArrowUpDown } from 'lucide-react';
+import { ArrowRight, Calendar, TrendingUp, Clock, Filter, ArrowUpDown, ChevronDown, ChevronUp } from 'lucide-react';
 import { differenceInDays, differenceInHours, differenceInMinutes, isPast } from 'date-fns';
 import Header from '../components/Header';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
@@ -117,6 +117,7 @@ const LaunchProgress = ({ targetDate }: { targetDate: string }) => {
 const Projects = () => {
   const [sortBy, setSortBy] = useState<'date' | 'score'>('date');
   const [filterTag, setFilterTag] = useState<string>('all');
+  const [showAll, setShowAll] = useState(false);
 
   // Get all unique tags
   const allTags = useMemo(() => {
@@ -128,7 +129,7 @@ const Projects = () => {
   }, []);
 
   // Get upcoming TGEs with filtering and sorting
-  const upcomingTGEs = useMemo(() => {
+  const allFilteredTGEs = useMemo(() => {
     let filtered = [...(tgeProjectsData as TGEProject[])];
     
     // Apply tag filter
@@ -145,8 +146,11 @@ const Projects = () => {
       }
     });
     
-    return filtered.slice(0, 5);
+    return filtered;
   }, [filterTag, sortBy]);
+
+  // Display either 5 or all items based on showAll state
+  const upcomingTGEs = showAll ? allFilteredTGEs : allFilteredTGEs.slice(0, 5);
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -283,6 +287,29 @@ const Projects = () => {
                 </Link>
               ))}
             </div>
+            
+            {/* Show All / Show Less Button */}
+            {allFilteredTGEs.length > 5 && (
+              <div className="mt-4 text-center">
+                <Button
+                  variant="outline"
+                  onClick={() => setShowAll(!showAll)}
+                  className="gap-2"
+                >
+                  {showAll ? (
+                    <>
+                      Show Less
+                      <ChevronUp className="h-4 w-4" />
+                    </>
+                  ) : (
+                    <>
+                      Show All ({allFilteredTGEs.length} total)
+                      <ChevronDown className="h-4 w-4" />
+                    </>
+                  )}
+                </Button>
+              </div>
+            )}
           </CardContent>
         </Card>
       </main>
