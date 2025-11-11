@@ -6,6 +6,7 @@ import Header from '../components/Header';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
 import { Badge } from '../components/ui/badge';
 import { Button } from '../components/ui/button';
+import { Progress } from '../components/ui/progress';
 import tgeProjectsData from '../lib/tge-projects.json';
 import { TGEProject } from '../lib/models/tge-project';
 
@@ -47,6 +48,34 @@ const CountdownTimer = ({ targetDate }: { targetDate: string }) => {
       {timeLeft}
     </div>
   );
+};
+
+const LaunchProgress = ({ targetDate }: { targetDate: string }) => {
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    const updateProgress = () => {
+      const now = new Date();
+      const target = new Date(targetDate);
+      const totalDays = 30; // Assume 30 days tracking window
+      
+      if (isPast(target)) {
+        setProgress(100);
+        return;
+      }
+
+      const daysRemaining = differenceInDays(target, now);
+      const progressValue = Math.max(0, Math.min(100, ((totalDays - daysRemaining) / totalDays) * 100));
+      setProgress(progressValue);
+    };
+
+    updateProgress();
+    const interval = setInterval(updateProgress, 60000);
+
+    return () => clearInterval(interval);
+  }, [targetDate]);
+
+  return <Progress value={progress} className="h-2" />;
 };
 
 const Projects = () => {
@@ -94,39 +123,42 @@ const Projects = () => {
                 <Link
                   key={project.id}
                   to="/tge"
-                  className="flex items-center justify-between p-3 rounded-lg bg-background hover:bg-muted/50 transition-all border hover:border-primary/20 hover:shadow-sm group"
+                  className="block p-3 rounded-lg bg-background hover:bg-muted/50 transition-all border hover:border-primary/20 hover:shadow-sm group"
                 >
-                  <div className="flex-1">
-                    <div className="flex items-center gap-2 mb-1">
-                      <h3 className="font-semibold group-hover:text-primary transition-colors">
-                        {project.name}
-                      </h3>
-                      {project.tags.slice(0, 2).map((tag) => (
-                        <Badge key={tag} variant="secondary" className="text-xs">
-                          {tag}
-                        </Badge>
-                      ))}
-                    </div>
-                    <p className="text-sm text-muted-foreground">
-                      {new Date(project.tgeDate).toLocaleDateString('en-US', {
-                        month: 'short',
-                        day: 'numeric',
-                        year: 'numeric'
-                      })}
-                    </p>
-                  </div>
-                  <div className="flex items-center gap-4">
-                    <div className="text-right">
-                      <CountdownTimer targetDate={project.tgeDate} />
-                    </div>
-                    <div className="text-right">
-                      <div className="flex items-center gap-1 text-sm font-medium">
-                        <TrendingUp className="h-4 w-4 text-primary" />
-                        {project.totalScore}
+                  <div className="flex items-center justify-between mb-2">
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2 mb-1">
+                        <h3 className="font-semibold group-hover:text-primary transition-colors">
+                          {project.name}
+                        </h3>
+                        {project.tags.slice(0, 2).map((tag) => (
+                          <Badge key={tag} variant="secondary" className="text-xs">
+                            {tag}
+                          </Badge>
+                        ))}
                       </div>
-                      <p className="text-xs text-muted-foreground">Score</p>
+                      <p className="text-sm text-muted-foreground">
+                        {new Date(project.tgeDate).toLocaleDateString('en-US', {
+                          month: 'short',
+                          day: 'numeric',
+                          year: 'numeric'
+                        })}
+                      </p>
+                    </div>
+                    <div className="flex items-center gap-4">
+                      <div className="text-right">
+                        <CountdownTimer targetDate={project.tgeDate} />
+                      </div>
+                      <div className="text-right">
+                        <div className="flex items-center gap-1 text-sm font-medium">
+                          <TrendingUp className="h-4 w-4 text-primary" />
+                          {project.totalScore}
+                        </div>
+                        <p className="text-xs text-muted-foreground">Score</p>
+                      </div>
                     </div>
                   </div>
+                  <LaunchProgress targetDate={project.tgeDate} />
                 </Link>
               ))}
             </div>
