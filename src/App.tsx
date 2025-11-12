@@ -14,6 +14,7 @@ import Utilities from "./pages/Utilities";
 import NFT from "./pages/NFT";
 import Projects from "./pages/Projects";
 import TGE from "./pages/TGE";
+import TGEDetail from "./pages/TGEDetail";
 
 const queryClient = new QueryClient();
 
@@ -33,6 +34,7 @@ const App = () => (
           <Route path="/nft" element={<NFT />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/tge" element={<TGE />} />
+          <Route path="/tge/:id" element={<TGEDetail />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

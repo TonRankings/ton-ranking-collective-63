@@ -282,7 +282,7 @@ const Projects = () => {
                       upcomingTGEs.map((project) => (
                         <tr key={project.id} className="border-b hover:bg-muted/30 transition-colors">
                           <td className="px-4 py-3">
-                            <Link to="/tge" className="font-medium hover:text-primary transition-colors">
+                            <Link to={`/tge/${project.id}`} className="font-medium hover:text-primary transition-colors">
                               {project.name}
                             </Link>
                           </td>
