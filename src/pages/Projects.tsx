@@ -14,6 +14,7 @@ import { TGEProject } from '../lib/models/tge-project';
 
 const CountdownTimer = ({ targetDate }: { targetDate: string }) => {
   const [timeLeft, setTimeLeft] = useState('');
+  const [colorClass, setColorClass] = useState('text-primary');
 
   useEffect(() => {
     const updateCountdown = () => {
@@ -22,6 +23,7 @@ const CountdownTimer = ({ targetDate }: { targetDate: string }) => {
       
       if (isPast(target)) {
         setTimeLeft('Launched');
+        setColorClass('text-green-600');
         return;
       }
 
@@ -36,6 +38,17 @@ const CountdownTimer = ({ targetDate }: { targetDate: string }) => {
       } else {
         setTimeLeft(`${minutes}m`);
       }
+
+      // Color coding based on urgency
+      if (days <= 3) {
+        setColorClass('text-red-600 font-semibold');
+      } else if (days <= 7) {
+        setColorClass('text-orange-600 font-semibold');
+      } else if (days <= 14) {
+        setColorClass('text-yellow-600 font-semibold');
+      } else {
+        setColorClass('text-primary');
+      }
     };
 
     updateCountdown();
@@ -45,7 +58,7 @@ const CountdownTimer = ({ targetDate }: { targetDate: string }) => {
   }, [targetDate]);
 
   return (
-    <div className="flex items-center gap-1 text-xs font-medium text-primary">
+    <div className={`flex items-center gap-1 text-xs font-medium ${colorClass}`}>
       <Clock className="h-3 w-3" />
       {timeLeft}
     </div>
@@ -250,6 +263,7 @@ const Projects = () => {
                     <tr className="border-b">
                       <th className="px-4 py-3 text-left text-sm font-medium text-muted-foreground">Project</th>
                       <th className="px-4 py-3 text-left text-sm font-medium text-muted-foreground">TGE Date</th>
+                      <th className="px-4 py-3 text-left text-sm font-medium text-muted-foreground">Countdown</th>
                       <th className="px-4 py-3 text-left text-sm font-medium text-muted-foreground">Roadmap Score</th>
                       <th className="px-4 py-3 text-left text-sm font-medium text-muted-foreground">Morality Index</th>
                       <th className="px-4 py-3 text-left text-sm font-medium text-muted-foreground">Social Engagement</th>
@@ -260,7 +274,7 @@ const Projects = () => {
                   <tbody className="bg-background">
                     {upcomingTGEs.length === 0 ? (
                       <tr>
-                        <td colSpan={7} className="px-4 py-8 text-center text-muted-foreground">
+                        <td colSpan={8} className="px-4 py-8 text-center text-muted-foreground">
                           No projects found matching the current filters.
                         </td>
                       </tr>
@@ -278,6 +292,9 @@ const Projects = () => {
                               day: 'numeric',
                               year: 'numeric'
                             })}
+                          </td>
+                          <td className="px-4 py-3">
+                            <CountdownTimer targetDate={project.tgeDate} />
                           </td>
                           <td className="px-4 py-3 text-sm">{project.roadmapScore.toFixed(1)}</td>
                           <td className="px-4 py-3 text-sm">{project.moralityIndex.toFixed(1)}</td>
