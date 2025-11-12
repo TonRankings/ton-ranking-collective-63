@@ -2,10 +2,10 @@ import { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { ArrowLeft, Clock, Calendar, TrendingUp } from 'lucide-react';
 import Header from '../components/Header';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+import { RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, LineChart, Line } from 'recharts';
 import tgeProjectsData from '../lib/tge-projects.json';
 import { TGEProject } from '@/lib/models/tge-project';
 import { format, formatDistanceToNow, isPast } from 'date-fns';
@@ -199,7 +199,7 @@ const TGEDetail = () => {
         </div>
 
         {/* Charts */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
           {/* Radar Chart */}
           <Card>
             <CardHeader>
@@ -241,6 +241,67 @@ const TGEDetail = () => {
             </CardContent>
           </Card>
         </div>
+
+        {/* Historical Trends Chart */}
+        {project.scoreHistory && project.scoreHistory.length > 0 && (
+          <Card>
+            <CardHeader>
+              <CardTitle>Historical Score Trends</CardTitle>
+              <CardDescription>
+                Track how the project's scores have evolved over time
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <ResponsiveContainer width="100%" height={400}>
+                <LineChart data={project.scoreHistory}>
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis 
+                    dataKey="date" 
+                    tickFormatter={(value) => format(new Date(value), 'MMM dd')}
+                  />
+                  <YAxis domain={[0, 10]} />
+                  <Tooltip 
+                    labelFormatter={(value) => format(new Date(value), 'MMM dd, yyyy')}
+                    formatter={(value: number) => value.toFixed(1)}
+                  />
+                  <Legend />
+                  <Line 
+                    type="monotone" 
+                    dataKey="roadmapScore" 
+                    stroke="#8b5cf6" 
+                    strokeWidth={2}
+                    name="Roadmap Score"
+                    dot={{ fill: '#8b5cf6', r: 4 }}
+                  />
+                  <Line 
+                    type="monotone" 
+                    dataKey="moralityIndex" 
+                    stroke="#22c55e" 
+                    strokeWidth={2}
+                    name="Morality Index"
+                    dot={{ fill: '#22c55e', r: 4 }}
+                  />
+                  <Line 
+                    type="monotone" 
+                    dataKey="socialEngagement" 
+                    stroke="#f59e0b" 
+                    strokeWidth={2}
+                    name="Social Engagement"
+                    dot={{ fill: '#f59e0b', r: 4 }}
+                  />
+                  <Line 
+                    type="monotone" 
+                    dataKey="totalScore" 
+                    stroke="hsl(var(--primary))" 
+                    strokeWidth={3}
+                    name="Total Score"
+                    dot={{ fill: 'hsl(var(--primary))', r: 5 }}
+                  />
+                </LineChart>
+              </ResponsiveContainer>
+            </CardContent>
+          </Card>
+        )}
       </div>
     </div>
   );

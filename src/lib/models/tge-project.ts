@@ -1,4 +1,12 @@
 
+export interface ScoreHistory {
+  date: string;
+  roadmapScore: number;
+  moralityIndex: number;
+  socialEngagement: number;
+  totalScore: number;
+}
+
 export interface TGEProject {
   id: string;
   name: string;
@@ -14,6 +22,7 @@ export interface TGEProject {
     socialEngagement?: 'up' | 'down' | 'neutral';
     totalScore?: 'up' | 'down' | 'neutral';
   };
+  scoreHistory?: ScoreHistory[];
 }
 
 export type SortField = 'name' | 'tgeDate' | 'roadmapScore' | 'moralityIndex' | 'socialEngagement' | 'totalScore';
