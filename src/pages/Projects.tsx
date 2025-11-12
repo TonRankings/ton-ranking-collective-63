@@ -243,49 +243,66 @@ const Projects = () => {
               </div>
             </div>
 
-            <div className="space-y-3">
-              {upcomingTGEs.map((project) => (
-                <Link
-                  key={project.id}
-                  to="/tge"
-                  className="block p-3 rounded-lg bg-background hover:bg-muted/50 transition-all border hover:border-primary/20 hover:shadow-sm group"
-                >
-                  <div className="flex items-center justify-between mb-2">
-                    <div className="flex-1">
-                      <div className="flex items-center gap-2 mb-1">
-                        <h3 className="font-semibold group-hover:text-primary transition-colors">
-                          {project.name}
-                        </h3>
-                        {project.tags.slice(0, 2).map((tag) => (
-                          <Badge key={tag} variant="secondary" className="text-xs">
-                            {tag}
-                          </Badge>
-                        ))}
-                      </div>
-                      <p className="text-sm text-muted-foreground">
-                        {new Date(project.tgeDate).toLocaleDateString('en-US', {
-                          month: 'short',
-                          day: 'numeric',
-                          year: 'numeric'
-                        })}
-                      </p>
-                    </div>
-                    <div className="flex items-center gap-4">
-                      <div className="text-right">
-                        <CountdownTimer targetDate={project.tgeDate} />
-                      </div>
-                      <div className="text-right">
-                        <div className="flex items-center gap-1 text-sm font-medium">
-                          <TrendingUp className="h-4 w-4 text-primary" />
-                          {project.totalScore}
-                        </div>
-                        <p className="text-xs text-muted-foreground">Score</p>
-                      </div>
-                    </div>
-                  </div>
-                  <LaunchProgress targetDate={project.tgeDate} />
-                </Link>
-              ))}
+            <div className="rounded-md border overflow-hidden">
+              <div className="overflow-x-auto">
+                <table className="w-full">
+                  <thead className="bg-muted/50">
+                    <tr className="border-b">
+                      <th className="px-4 py-3 text-left text-sm font-medium text-muted-foreground">Project</th>
+                      <th className="px-4 py-3 text-left text-sm font-medium text-muted-foreground">TGE Date</th>
+                      <th className="px-4 py-3 text-left text-sm font-medium text-muted-foreground">Roadmap Score</th>
+                      <th className="px-4 py-3 text-left text-sm font-medium text-muted-foreground">Morality Index</th>
+                      <th className="px-4 py-3 text-left text-sm font-medium text-muted-foreground">Social Engagement</th>
+                      <th className="px-4 py-3 text-left text-sm font-medium text-muted-foreground">Total Score</th>
+                      <th className="px-4 py-3 text-left text-sm font-medium text-muted-foreground">Tags</th>
+                    </tr>
+                  </thead>
+                  <tbody className="bg-background">
+                    {upcomingTGEs.length === 0 ? (
+                      <tr>
+                        <td colSpan={7} className="px-4 py-8 text-center text-muted-foreground">
+                          No projects found matching the current filters.
+                        </td>
+                      </tr>
+                    ) : (
+                      upcomingTGEs.map((project) => (
+                        <tr key={project.id} className="border-b hover:bg-muted/30 transition-colors">
+                          <td className="px-4 py-3">
+                            <Link to="/tge" className="font-medium hover:text-primary transition-colors">
+                              {project.name}
+                            </Link>
+                          </td>
+                          <td className="px-4 py-3 text-sm text-muted-foreground">
+                            {new Date(project.tgeDate).toLocaleDateString('en-US', {
+                              month: 'short',
+                              day: 'numeric',
+                              year: 'numeric'
+                            })}
+                          </td>
+                          <td className="px-4 py-3 text-sm">{project.roadmapScore.toFixed(1)}</td>
+                          <td className="px-4 py-3 text-sm">{project.moralityIndex.toFixed(1)}</td>
+                          <td className="px-4 py-3 text-sm">{project.socialEngagement.toFixed(1)}</td>
+                          <td className="px-4 py-3">
+                            <div className="flex items-center gap-1 text-sm font-medium">
+                              <TrendingUp className="h-4 w-4 text-primary" />
+                              {project.totalScore.toFixed(1)}
+                            </div>
+                          </td>
+                          <td className="px-4 py-3">
+                            <div className="flex flex-wrap gap-1">
+                              {project.tags.slice(0, 3).map((tag) => (
+                                <Badge key={tag} variant="secondary" className="text-xs">
+                                  {tag}
+                                </Badge>
+                              ))}
+                            </div>
+                          </td>
+                        </tr>
+                      ))
+                    )}
+                  </tbody>
+                </table>
+              </div>
             </div>
             
             {/* Show All / Show Less Button */}
