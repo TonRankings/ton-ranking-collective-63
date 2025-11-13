@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Calendar, TrendingUp, Clock, Filter, ArrowUpDown, ChevronDown, ChevronUp } from 'lucide-react';
+import { ArrowRight, Calendar, TrendingUp, Clock, Filter, ArrowUpDown, ChevronDown, ChevronUp, LayoutGrid, Table2 } from 'lucide-react';
 import { differenceInDays, differenceInHours, differenceInMinutes, isPast } from 'date-fns';
 import Header from '../components/Header';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
@@ -131,6 +131,7 @@ const Projects = () => {
   const [sortBy, setSortBy] = useState<'date' | 'score'>('date');
   const [filterTag, setFilterTag] = useState<string>('all');
   const [showAll, setShowAll] = useState(false);
+  const [viewMode, setViewMode] = useState<'table' | 'cards'>('table');
 
   // Get all unique tags
   const allTags = useMemo(() => {
@@ -254,73 +255,168 @@ const Projects = () => {
                   </SelectContent>
                 </Select>
               </div>
-            </div>
 
-            <div className="rounded-md border overflow-hidden">
-              <div className="overflow-x-auto">
-                <table className="w-full">
-                  <thead className="bg-muted/50">
-                    <tr className="border-b">
-                      <th className="px-4 py-3 text-left text-sm font-medium text-muted-foreground">Project</th>
-                      <th className="px-4 py-3 text-left text-sm font-medium text-muted-foreground hidden sm:table-cell">TGE Date</th>
-                      <th className="px-4 py-3 text-left text-sm font-medium text-muted-foreground">Countdown</th>
-                      <th className="px-4 py-3 text-left text-sm font-medium text-muted-foreground hidden lg:table-cell">Roadmap Score</th>
-                      <th className="px-4 py-3 text-left text-sm font-medium text-muted-foreground hidden lg:table-cell">Morality Index</th>
-                      <th className="px-4 py-3 text-left text-sm font-medium text-muted-foreground hidden lg:table-cell">Social Engagement</th>
-                      <th className="px-4 py-3 text-left text-sm font-medium text-muted-foreground">Total Score</th>
-                      <th className="px-4 py-3 text-left text-sm font-medium text-muted-foreground hidden md:table-cell">Tags</th>
-                    </tr>
-                  </thead>
-                  <tbody className="bg-background">
-                    {upcomingTGEs.length === 0 ? (
-                      <tr>
-                        <td colSpan={8} className="px-4 py-8 text-center text-muted-foreground">
-                          No projects found matching the current filters.
-                        </td>
-                      </tr>
-                    ) : (
-                      upcomingTGEs.map((project) => (
-                        <tr key={project.id} className="border-b hover:bg-muted/30 transition-colors">
-                          <td className="px-4 py-3">
-                            <Link to={`/tge/${project.id}`} className="font-medium hover:text-primary transition-colors">
-                              {project.name}
-                            </Link>
-                          </td>
-                          <td className="px-4 py-3 text-sm text-muted-foreground hidden sm:table-cell">
-                            {new Date(project.tgeDate).toLocaleDateString('en-US', {
-                              month: 'short',
-                              day: 'numeric',
-                              year: 'numeric'
-                            })}
-                          </td>
-                          <td className="px-4 py-3">
-                            <CountdownTimer targetDate={project.tgeDate} />
-                          </td>
-                          <td className="px-4 py-3 text-sm hidden lg:table-cell">{project.roadmapScore.toFixed(1)}</td>
-                          <td className="px-4 py-3 text-sm hidden lg:table-cell">{project.moralityIndex.toFixed(1)}</td>
-                          <td className="px-4 py-3 text-sm hidden lg:table-cell">{project.socialEngagement.toFixed(1)}</td>
-                          <td className="px-4 py-3">
-                            <div className="flex items-center gap-1 text-sm font-medium">
-                              <TrendingUp className="h-4 w-4 text-primary" />
-                              {project.totalScore.toFixed(1)}
-                            </div>
-                          </td>
-                          <td className="px-4 py-3 hidden md:table-cell">
-                            <div className="flex flex-wrap gap-1">
-                              {project.tags.slice(0, 3).map((tag) => (
-                                <Badge key={tag} variant="secondary" className="text-xs">
-                                  {tag}
-                                </Badge>
-                              ))}
-                            </div>
-                          </td>
-                        </tr>
-                      ))
-                    )}
-                  </tbody>
-                </table>
+              {/* View Mode Toggle */}
+              <div className="ml-auto flex items-center gap-1 border rounded-md p-1">
+                <Button
+                  variant={viewMode === 'table' ? 'secondary' : 'ghost'}
+                  size="sm"
+                  onClick={() => setViewMode('table')}
+                  className="h-8 px-3"
+                >
+                  <Table2 className="h-4 w-4" />
+                </Button>
+                <Button
+                  variant={viewMode === 'cards' ? 'secondary' : 'ghost'}
+                  size="sm"
+                  onClick={() => setViewMode('cards')}
+                  className="h-8 px-3"
+                >
+                  <LayoutGrid className="h-4 w-4" />
+                </Button>
               </div>
             </div>
+
+            {/* Card View for Mobile/Compact View */}
+            {viewMode === 'cards' ? (
+              <div className="grid gap-4">
+                {upcomingTGEs.length === 0 ? (
+                  <div className="text-center py-8 text-muted-foreground">
+                    No projects found matching the current filters.
+                  </div>
+                ) : (
+                  upcomingTGEs.map((project) => (
+                    <Link 
+                      key={project.id} 
+                      to={`/tge/${project.id}`}
+                      className="block"
+                    >
+                      <Card className="hover:shadow-md transition-all hover:border-primary/50">
+                        <CardContent className="p-4">
+                          <div className="flex items-start justify-between mb-3">
+                            <div className="flex-1">
+                              <h3 className="font-semibold text-lg mb-1 hover:text-primary transition-colors">
+                                {project.name}
+                              </h3>
+                              <div className="flex flex-wrap gap-1 mb-2">
+                                {project.tags.slice(0, 3).map((tag) => (
+                                  <Badge key={tag} variant="secondary" className="text-xs">
+                                    {tag}
+                                  </Badge>
+                                ))}
+                              </div>
+                            </div>
+                            <div className="flex items-center gap-1 text-lg font-bold">
+                              <TrendingUp className="h-5 w-5 text-primary" />
+                              {project.totalScore.toFixed(1)}
+                            </div>
+                          </div>
+                          
+                          <div className="grid grid-cols-2 gap-3 mb-3">
+                            <div>
+                              <p className="text-xs text-muted-foreground mb-1">TGE Date</p>
+                              <p className="text-sm font-medium">
+                                {new Date(project.tgeDate).toLocaleDateString('en-US', {
+                                  month: 'short',
+                                  day: 'numeric',
+                                  year: 'numeric'
+                                })}
+                              </p>
+                            </div>
+                            <div>
+                              <p className="text-xs text-muted-foreground mb-1">Countdown</p>
+                              <CountdownTimer targetDate={project.tgeDate} />
+                            </div>
+                          </div>
+
+                          <div className="grid grid-cols-3 gap-2 pt-3 border-t">
+                            <div>
+                              <p className="text-xs text-muted-foreground mb-1">Roadmap</p>
+                              <p className="text-sm font-semibold">{project.roadmapScore.toFixed(1)}</p>
+                            </div>
+                            <div>
+                              <p className="text-xs text-muted-foreground mb-1">Morality</p>
+                              <p className="text-sm font-semibold">{project.moralityIndex.toFixed(1)}</p>
+                            </div>
+                            <div>
+                              <p className="text-xs text-muted-foreground mb-1">Social</p>
+                              <p className="text-sm font-semibold">{project.socialEngagement.toFixed(1)}</p>
+                            </div>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </Link>
+                  ))
+                )}
+              </div>
+            ) : (
+              /* Table View */
+              <div className="rounded-md border overflow-hidden">
+                <div className="overflow-x-auto">
+                  <table className="w-full">
+                    <thead className="bg-muted/50">
+                      <tr className="border-b">
+                        <th className="px-4 py-3 text-left text-sm font-medium text-muted-foreground">Project</th>
+                        <th className="px-4 py-3 text-left text-sm font-medium text-muted-foreground hidden sm:table-cell">TGE Date</th>
+                        <th className="px-4 py-3 text-left text-sm font-medium text-muted-foreground">Countdown</th>
+                        <th className="px-4 py-3 text-left text-sm font-medium text-muted-foreground hidden lg:table-cell">Roadmap Score</th>
+                        <th className="px-4 py-3 text-left text-sm font-medium text-muted-foreground hidden lg:table-cell">Morality Index</th>
+                        <th className="px-4 py-3 text-left text-sm font-medium text-muted-foreground hidden lg:table-cell">Social Engagement</th>
+                        <th className="px-4 py-3 text-left text-sm font-medium text-muted-foreground">Total Score</th>
+                        <th className="px-4 py-3 text-left text-sm font-medium text-muted-foreground hidden md:table-cell">Tags</th>
+                      </tr>
+                    </thead>
+                    <tbody className="bg-background">
+                      {upcomingTGEs.length === 0 ? (
+                        <tr>
+                          <td colSpan={8} className="px-4 py-8 text-center text-muted-foreground">
+                            No projects found matching the current filters.
+                          </td>
+                        </tr>
+                      ) : (
+                        upcomingTGEs.map((project) => (
+                          <tr key={project.id} className="border-b hover:bg-muted/30 transition-colors">
+                            <td className="px-4 py-3">
+                              <Link to={`/tge/${project.id}`} className="font-medium hover:text-primary transition-colors">
+                                {project.name}
+                              </Link>
+                            </td>
+                            <td className="px-4 py-3 text-sm text-muted-foreground hidden sm:table-cell">
+                              {new Date(project.tgeDate).toLocaleDateString('en-US', {
+                                month: 'short',
+                                day: 'numeric',
+                                year: 'numeric'
+                              })}
+                            </td>
+                            <td className="px-4 py-3">
+                              <CountdownTimer targetDate={project.tgeDate} />
+                            </td>
+                            <td className="px-4 py-3 text-sm hidden lg:table-cell">{project.roadmapScore.toFixed(1)}</td>
+                            <td className="px-4 py-3 text-sm hidden lg:table-cell">{project.moralityIndex.toFixed(1)}</td>
+                            <td className="px-4 py-3 text-sm hidden lg:table-cell">{project.socialEngagement.toFixed(1)}</td>
+                            <td className="px-4 py-3">
+                              <div className="flex items-center gap-1 text-sm font-medium">
+                                <TrendingUp className="h-4 w-4 text-primary" />
+                                {project.totalScore.toFixed(1)}
+                              </div>
+                            </td>
+                            <td className="px-4 py-3 hidden md:table-cell">
+                              <div className="flex flex-wrap gap-1">
+                                {project.tags.slice(0, 3).map((tag) => (
+                                  <Badge key={tag} variant="secondary" className="text-xs">
+                                    {tag}
+                                  </Badge>
+                                ))}
+                              </div>
+                            </td>
+                          </tr>
+                        ))
+                      )}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
             
             {/* Show All / Show Less Button */}
             {allFilteredTGEs.length > 5 && (
