@@ -169,7 +169,7 @@ const Projects = () => {
     <div className="min-h-screen bg-gray-50">
       <Header />
       
-      <main className="app-container max-w-3xl mx-auto pt-24 pb-20">
+      <main className="app-container max-w-7xl mx-auto pt-24 pb-20">
         <div className="mb-8">
           <h1 className="text-4xl font-bold mb-3">TON Projects</h1>
           <p className="text-muted-foreground text-lg">
