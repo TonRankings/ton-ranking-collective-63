@@ -92,10 +92,16 @@ const TGEDetail = () => {
     return 'text-red-600';
   };
 
-  const getScoreBg = (score: number) => {
-    if (score >= 8) return 'bg-green-100 border-green-300';
-    if (score >= 6) return 'bg-yellow-100 border-yellow-300';
-    return 'bg-red-100 border-red-300';
+  const getScoreGradient = (score: number) => {
+    if (score >= 8) return 'from-green-500/10 to-green-500/5 border-green-500/30 hover:shadow-green-500/20';
+    if (score >= 6) return 'from-yellow-500/10 to-yellow-500/5 border-yellow-500/30 hover:shadow-yellow-500/20';
+    return 'from-red-500/10 to-red-500/5 border-red-500/30 hover:shadow-red-500/20';
+  };
+
+  const getIconBg = (score: number) => {
+    if (score >= 8) return 'bg-green-500/20 text-green-600';
+    if (score >= 6) return 'bg-yellow-500/20 text-yellow-600';
+    return 'bg-red-500/20 text-red-600';
   };
 
   return (
@@ -139,60 +145,116 @@ const TGEDetail = () => {
         </div>
 
         {/* Score Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-          <Card className={`border-2 ${getScoreBg(project.roadmapScore)}`}>
-            <CardHeader className="pb-3">
-              <CardTitle className="text-sm font-medium text-muted-foreground">
-                Roadmap Score
-              </CardTitle>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+          {/* Roadmap Score Card */}
+          <Card className={`border bg-gradient-to-br ${getScoreGradient(project.roadmapScore)} transition-all duration-300 hover:shadow-lg hover:scale-105 animate-fade-in`}>
+            <CardHeader className="pb-2">
+              <div className="flex items-center justify-between">
+                <CardTitle className="text-sm font-medium text-muted-foreground">
+                  Roadmap Score
+                </CardTitle>
+                <div className={`h-8 w-8 rounded-full ${getIconBg(project.roadmapScore)} flex items-center justify-center`}>
+                  <TrendingUp className="h-4 w-4" />
+                </div>
+              </div>
             </CardHeader>
             <CardContent>
-              <div className={`text-3xl font-bold ${getScoreColor(project.roadmapScore)}`}>
-                {project.roadmapScore.toFixed(1)}
-                <span className="text-sm text-muted-foreground">/10</span>
+              <div className="flex items-baseline gap-1">
+                <div className={`text-4xl font-bold ${getScoreColor(project.roadmapScore)}`}>
+                  {project.roadmapScore.toFixed(1)}
+                </div>
+                <span className="text-lg text-muted-foreground font-medium">/10</span>
+              </div>
+              <div className="mt-2 h-1.5 bg-muted rounded-full overflow-hidden">
+                <div 
+                  className={`h-full ${project.roadmapScore >= 8 ? 'bg-green-500' : project.roadmapScore >= 6 ? 'bg-yellow-500' : 'bg-red-500'} transition-all duration-500`}
+                  style={{ width: `${project.roadmapScore * 10}%` }}
+                />
               </div>
             </CardContent>
           </Card>
 
-          <Card className={`border-2 ${getScoreBg(project.moralityIndex)}`}>
-            <CardHeader className="pb-3">
-              <CardTitle className="text-sm font-medium text-muted-foreground">
-                Morality Index
-              </CardTitle>
+          {/* Morality Index Card */}
+          <Card className={`border bg-gradient-to-br ${getScoreGradient(project.moralityIndex)} transition-all duration-300 hover:shadow-lg hover:scale-105 animate-fade-in`} style={{ animationDelay: '100ms' }}>
+            <CardHeader className="pb-2">
+              <div className="flex items-center justify-between">
+                <CardTitle className="text-sm font-medium text-muted-foreground">
+                  Morality Index
+                </CardTitle>
+                <div className={`h-8 w-8 rounded-full ${getIconBg(project.moralityIndex)} flex items-center justify-center`}>
+                  <TrendingUp className="h-4 w-4" />
+                </div>
+              </div>
             </CardHeader>
             <CardContent>
-              <div className={`text-3xl font-bold ${getScoreColor(project.moralityIndex)}`}>
-                {project.moralityIndex.toFixed(1)}
-                <span className="text-sm text-muted-foreground">/10</span>
+              <div className="flex items-baseline gap-1">
+                <div className={`text-4xl font-bold ${getScoreColor(project.moralityIndex)}`}>
+                  {project.moralityIndex.toFixed(1)}
+                </div>
+                <span className="text-lg text-muted-foreground font-medium">/10</span>
+              </div>
+              <div className="mt-2 h-1.5 bg-muted rounded-full overflow-hidden">
+                <div 
+                  className={`h-full ${project.moralityIndex >= 8 ? 'bg-green-500' : project.moralityIndex >= 6 ? 'bg-yellow-500' : 'bg-red-500'} transition-all duration-500`}
+                  style={{ width: `${project.moralityIndex * 10}%` }}
+                />
               </div>
             </CardContent>
           </Card>
 
-          <Card className={`border-2 ${getScoreBg(project.socialEngagement)}`}>
-            <CardHeader className="pb-3">
-              <CardTitle className="text-sm font-medium text-muted-foreground">
-                Social Engagement
-              </CardTitle>
+          {/* Social Engagement Card */}
+          <Card className={`border bg-gradient-to-br ${getScoreGradient(project.socialEngagement)} transition-all duration-300 hover:shadow-lg hover:scale-105 animate-fade-in`} style={{ animationDelay: '200ms' }}>
+            <CardHeader className="pb-2">
+              <div className="flex items-center justify-between">
+                <CardTitle className="text-sm font-medium text-muted-foreground">
+                  Social Engagement
+                </CardTitle>
+                <div className={`h-8 w-8 rounded-full ${getIconBg(project.socialEngagement)} flex items-center justify-center`}>
+                  <TrendingUp className="h-4 w-4" />
+                </div>
+              </div>
             </CardHeader>
             <CardContent>
-              <div className={`text-3xl font-bold ${getScoreColor(project.socialEngagement)}`}>
-                {project.socialEngagement.toFixed(1)}
-                <span className="text-sm text-muted-foreground">/10</span>
+              <div className="flex items-baseline gap-1">
+                <div className={`text-4xl font-bold ${getScoreColor(project.socialEngagement)}`}>
+                  {project.socialEngagement.toFixed(1)}
+                </div>
+                <span className="text-lg text-muted-foreground font-medium">/10</span>
+              </div>
+              <div className="mt-2 h-1.5 bg-muted rounded-full overflow-hidden">
+                <div 
+                  className={`h-full ${project.socialEngagement >= 8 ? 'bg-green-500' : project.socialEngagement >= 6 ? 'bg-yellow-500' : 'bg-red-500'} transition-all duration-500`}
+                  style={{ width: `${project.socialEngagement * 10}%` }}
+                />
               </div>
             </CardContent>
           </Card>
 
-          <Card className="border-2 border-primary bg-primary/10">
-            <CardHeader className="pb-3">
-              <CardTitle className="text-sm font-medium text-muted-foreground flex items-center gap-2">
-                <TrendingUp className="h-4 w-4" />
-                Total Score
-              </CardTitle>
+          {/* Total Score Card - Special Design */}
+          <Card className="border-2 border-primary bg-gradient-to-br from-primary/20 via-primary/10 to-primary/5 transition-all duration-300 hover:shadow-xl hover:shadow-primary/20 hover:scale-105 animate-fade-in" style={{ animationDelay: '300ms' }}>
+            <CardHeader className="pb-2">
+              <div className="flex items-center justify-between">
+                <CardTitle className="text-sm font-medium text-primary flex items-center gap-2">
+                  <TrendingUp className="h-4 w-4" />
+                  Total Score
+                </CardTitle>
+                <div className="h-8 w-8 rounded-full bg-primary/20 flex items-center justify-center">
+                  <TrendingUp className="h-4 w-4 text-primary" />
+                </div>
+              </div>
             </CardHeader>
             <CardContent>
-              <div className="text-3xl font-bold text-primary">
-                {project.totalScore.toFixed(1)}
-                <span className="text-sm text-muted-foreground">/10</span>
+              <div className="flex items-baseline gap-1">
+                <div className="text-4xl font-bold text-primary">
+                  {project.totalScore.toFixed(1)}
+                </div>
+                <span className="text-lg text-primary/70 font-medium">/10</span>
+              </div>
+              <div className="mt-2 h-1.5 bg-primary/20 rounded-full overflow-hidden">
+                <div 
+                  className="h-full bg-primary transition-all duration-500"
+                  style={{ width: `${project.totalScore * 10}%` }}
+                />
               </div>
             </CardContent>
           </Card>
