@@ -262,13 +262,13 @@ const Projects = () => {
                   <thead className="bg-muted/50">
                     <tr className="border-b">
                       <th className="px-4 py-3 text-left text-sm font-medium text-muted-foreground">Project</th>
-                      <th className="px-4 py-3 text-left text-sm font-medium text-muted-foreground">TGE Date</th>
+                      <th className="px-4 py-3 text-left text-sm font-medium text-muted-foreground hidden sm:table-cell">TGE Date</th>
                       <th className="px-4 py-3 text-left text-sm font-medium text-muted-foreground">Countdown</th>
-                      <th className="px-4 py-3 text-left text-sm font-medium text-muted-foreground">Roadmap Score</th>
-                      <th className="px-4 py-3 text-left text-sm font-medium text-muted-foreground">Morality Index</th>
-                      <th className="px-4 py-3 text-left text-sm font-medium text-muted-foreground">Social Engagement</th>
+                      <th className="px-4 py-3 text-left text-sm font-medium text-muted-foreground hidden lg:table-cell">Roadmap Score</th>
+                      <th className="px-4 py-3 text-left text-sm font-medium text-muted-foreground hidden lg:table-cell">Morality Index</th>
+                      <th className="px-4 py-3 text-left text-sm font-medium text-muted-foreground hidden lg:table-cell">Social Engagement</th>
                       <th className="px-4 py-3 text-left text-sm font-medium text-muted-foreground">Total Score</th>
-                      <th className="px-4 py-3 text-left text-sm font-medium text-muted-foreground">Tags</th>
+                      <th className="px-4 py-3 text-left text-sm font-medium text-muted-foreground hidden md:table-cell">Tags</th>
                     </tr>
                   </thead>
                   <tbody className="bg-background">
@@ -286,7 +286,7 @@ const Projects = () => {
                               {project.name}
                             </Link>
                           </td>
-                          <td className="px-4 py-3 text-sm text-muted-foreground">
+                          <td className="px-4 py-3 text-sm text-muted-foreground hidden sm:table-cell">
                             {new Date(project.tgeDate).toLocaleDateString('en-US', {
                               month: 'short',
                               day: 'numeric',
@@ -296,16 +296,16 @@ const Projects = () => {
                           <td className="px-4 py-3">
                             <CountdownTimer targetDate={project.tgeDate} />
                           </td>
-                          <td className="px-4 py-3 text-sm">{project.roadmapScore.toFixed(1)}</td>
-                          <td className="px-4 py-3 text-sm">{project.moralityIndex.toFixed(1)}</td>
-                          <td className="px-4 py-3 text-sm">{project.socialEngagement.toFixed(1)}</td>
+                          <td className="px-4 py-3 text-sm hidden lg:table-cell">{project.roadmapScore.toFixed(1)}</td>
+                          <td className="px-4 py-3 text-sm hidden lg:table-cell">{project.moralityIndex.toFixed(1)}</td>
+                          <td className="px-4 py-3 text-sm hidden lg:table-cell">{project.socialEngagement.toFixed(1)}</td>
                           <td className="px-4 py-3">
                             <div className="flex items-center gap-1 text-sm font-medium">
                               <TrendingUp className="h-4 w-4 text-primary" />
                               {project.totalScore.toFixed(1)}
                             </div>
                           </td>
-                          <td className="px-4 py-3">
+                          <td className="px-4 py-3 hidden md:table-cell">
                             <div className="flex flex-wrap gap-1">
                               {project.tags.slice(0, 3).map((tag) => (
                                 <Badge key={tag} variant="secondary" className="text-xs">
