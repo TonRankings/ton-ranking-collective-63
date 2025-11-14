@@ -50,11 +50,6 @@ const Index = () => {
             description="The highest rated TON integrated apps across all categories"
             apps={appsToShow} 
           />
-          <RankingList 
-            title="Top Rated Apps" 
-            description="Apps with the highest ratings across all categories" 
-            apps={topRatedApps} 
-          />
         </div>
       );
     } else {
