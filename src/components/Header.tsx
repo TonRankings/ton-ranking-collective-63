@@ -17,8 +17,8 @@ const Header = () => {
             }`}
           >
       <div className="flex items-center justify-center max-w-7xl mx-auto">
-        <Link to="/" className="font-semibold tracking-tight flex items-center gap-2 transition-all hover:opacity-80 text-xl">
-          TON RanKings
+        <Link to="/" className="font-semibold tracking-tight flex items-center gap-2 transition-all hover:opacity-80">
+          <img src="/lovable-uploads/31c9a471-e00a-4044-af87-4899946c79a3.png" alt="TON RanKings" className="h-20" />
         </Link>
       </div>
     </header>;
