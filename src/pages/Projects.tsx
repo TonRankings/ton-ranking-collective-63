@@ -127,7 +127,7 @@ const LaunchProgress = ({ targetDate }: { targetDate: string }) => {
   );
 };
 
-const Projects = () => {
+const Projects = ({ embedded = false }: { embedded?: boolean }) => {
   const [sortBy, setSortBy] = useState<'date' | 'score'>('date');
   const [filterTag, setFilterTag] = useState<string>('all');
   const [showAll, setShowAll] = useState(false);
@@ -168,7 +168,7 @@ const Projects = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <Header />
+      {!embedded && <Header />}
       
       <main className="app-container max-w-7xl mx-auto pt-24 pb-20">
         <div className="mb-8">
