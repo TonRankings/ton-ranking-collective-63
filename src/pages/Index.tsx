@@ -63,7 +63,7 @@ const Index = () => {
         case 'nft':
           return <NFTContent />;
         case 'projects':
-          return <ProjectsContent />;
+          return <ProjectsContent embedded={true} />;
         default:
           return (
             <div className="mt-6">
