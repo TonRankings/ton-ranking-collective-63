@@ -17,6 +17,7 @@ import ProjectsContent from './Projects';
 const Index = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [isLoaded, setIsLoaded] = useState(false);
+  const [isTransitioning, setIsTransitioning] = useState(false);
   const navigate = useNavigate();
   
   useEffect(() => {
@@ -31,13 +32,22 @@ const Index = () => {
   // Get top rated apps
   const topRatedApps = getTopRatedApps(10);
 
-  // Handle category selection
+  // Handle category selection with smooth transition
   const handleCategorySelect = (categoryId: string) => {
-    setSelectedCategory(categoryId);
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
+    if (categoryId === selectedCategory) return;
+    
+    // Start exit animation
+    setIsTransitioning(true);
+    
+    // After exit animation completes, change category and start enter animation
+    setTimeout(() => {
+      setSelectedCategory(categoryId);
+      setIsTransitioning(false);
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }, 200); // Match this with the exit animation duration
   };
 
   // Render content based on selected category
@@ -97,7 +107,11 @@ const Index = () => {
           </div>
           
           {/* Dynamic content area - will change based on selected category */}
-          <div className={`transform transition-all duration-500 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+          <div className={`transform transition-all duration-300 ease-out ${
+            isLoaded && !isTransitioning 
+              ? 'translate-y-0 opacity-100 scale-100' 
+              : 'translate-y-4 opacity-0 scale-95'
+          }`}>
             {renderCategoryContent()}
           </div>
         </div>
