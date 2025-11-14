@@ -169,5 +169,175 @@
       { "date": "2025-04-01", "roadmapScore": 8.8, "moralityIndex": 8.3, "socialEngagement": 8.7, "totalScore": 8.6 },
       { "date": "2025-05-01", "roadmapScore": 9.0, "moralityIndex": 8.5, "socialEngagement": 9.0, "totalScore": 8.8 }
     ]
+  },
+  {
+    "id": "tge-11",
+    "name": "GameVerse",
+    "tgeDate": "2025-08-28",
+    "roadmapScore": 8.1,
+    "moralityIndex": 7.8,
+    "socialEngagement": 9.1,
+    "totalScore": 8.3,
+    "tags": ["GameFi", "Metaverse", "Social"],
+    "scoreHistory": [
+      { "date": "2025-01-01", "roadmapScore": 6.5, "moralityIndex": 6.2, "socialEngagement": 7.5, "totalScore": 6.7 },
+      { "date": "2025-02-01", "roadmapScore": 7.1, "moralityIndex": 6.8, "socialEngagement": 8.1, "totalScore": 7.3 },
+      { "date": "2025-03-01", "roadmapScore": 7.6, "moralityIndex": 7.3, "socialEngagement": 8.6, "totalScore": 7.8 },
+      { "date": "2025-04-01", "roadmapScore": 7.9, "moralityIndex": 7.6, "socialEngagement": 8.9, "totalScore": 8.1 },
+      { "date": "2025-05-01", "roadmapScore": 8.1, "moralityIndex": 7.8, "socialEngagement": 9.1, "totalScore": 8.3 }
+    ]
+  },
+  {
+    "id": "tge-12",
+    "name": "LendChain",
+    "tgeDate": "2025-09-05",
+    "roadmapScore": 9.2,
+    "moralityIndex": 8.9,
+    "socialEngagement": 7.9,
+    "totalScore": 8.7,
+    "tags": ["DeFi", "Lending", "Protocol"],
+    "scoreHistory": [
+      { "date": "2025-01-01", "roadmapScore": 7.6, "moralityIndex": 7.5, "socialEngagement": 6.5, "totalScore": 7.2 },
+      { "date": "2025-02-01", "roadmapScore": 8.2, "moralityIndex": 8.1, "socialEngagement": 7.0, "totalScore": 7.8 },
+      { "date": "2025-03-01", "roadmapScore": 8.7, "moralityIndex": 8.5, "socialEngagement": 7.4, "totalScore": 8.2 },
+      { "date": "2025-04-01", "roadmapScore": 9.0, "moralityIndex": 8.7, "socialEngagement": 7.7, "totalScore": 8.5 },
+      { "date": "2025-05-01", "roadmapScore": 9.2, "moralityIndex": 8.9, "socialEngagement": 7.9, "totalScore": 8.7 }
+    ]
+  },
+  {
+    "id": "tge-13",
+    "name": "NFTMarket Pro",
+    "tgeDate": "2025-09-12",
+    "roadmapScore": 7.9,
+    "moralityIndex": 7.5,
+    "socialEngagement": 8.5,
+    "totalScore": 8.0,
+    "tags": ["NFT", "Marketplace", "Social"],
+    "scoreHistory": [
+      { "date": "2025-01-01", "roadmapScore": 6.3, "moralityIndex": 6.0, "socialEngagement": 7.0, "totalScore": 6.4 },
+      { "date": "2025-02-01", "roadmapScore": 6.9, "moralityIndex": 6.6, "socialEngagement": 7.6, "totalScore": 7.0 },
+      { "date": "2025-03-01", "roadmapScore": 7.4, "moralityIndex": 7.1, "socialEngagement": 8.0, "totalScore": 7.5 },
+      { "date": "2025-04-01", "roadmapScore": 7.7, "moralityIndex": 7.3, "socialEngagement": 8.3, "totalScore": 7.8 },
+      { "date": "2025-05-01", "roadmapScore": 7.9, "moralityIndex": 7.5, "socialEngagement": 8.5, "totalScore": 8.0 }
+    ]
+  },
+  {
+    "id": "tge-14",
+    "name": "StakeHub",
+    "tgeDate": "2025-09-18",
+    "roadmapScore": 8.8,
+    "moralityIndex": 8.6,
+    "socialEngagement": 8.2,
+    "totalScore": 8.5,
+    "tags": ["Staking", "DeFi", "Yield"],
+    "scoreHistory": [
+      { "date": "2025-01-01", "roadmapScore": 7.2, "moralityIndex": 7.1, "socialEngagement": 6.8, "totalScore": 7.0 },
+      { "date": "2025-02-01", "roadmapScore": 7.8, "moralityIndex": 7.7, "socialEngagement": 7.3, "totalScore": 7.6 },
+      { "date": "2025-03-01", "roadmapScore": 8.3, "moralityIndex": 8.2, "socialEngagement": 7.7, "totalScore": 8.1 },
+      { "date": "2025-04-01", "roadmapScore": 8.6, "moralityIndex": 8.4, "socialEngagement": 8.0, "totalScore": 8.3 },
+      { "date": "2025-05-01", "roadmapScore": 8.8, "moralityIndex": 8.6, "socialEngagement": 8.2, "totalScore": 8.5 }
+    ]
+  },
+  {
+    "id": "tge-15",
+    "name": "VRWorlds",
+    "tgeDate": "2025-09-25",
+    "roadmapScore": 7.7,
+    "moralityIndex": 7.3,
+    "socialEngagement": 9.3,
+    "totalScore": 8.1,
+    "tags": ["GameFi", "VR", "Metaverse"],
+    "scoreHistory": [
+      { "date": "2025-01-01", "roadmapScore": 6.0, "moralityIndex": 5.8, "socialEngagement": 7.8, "totalScore": 6.5 },
+      { "date": "2025-02-01", "roadmapScore": 6.7, "moralityIndex": 6.4, "socialEngagement": 8.4, "totalScore": 7.2 },
+      { "date": "2025-03-01", "roadmapScore": 7.2, "moralityIndex": 6.9, "socialEngagement": 8.8, "totalScore": 7.6 },
+      { "date": "2025-04-01", "roadmapScore": 7.5, "moralityIndex": 7.1, "socialEngagement": 9.1, "totalScore": 7.9 },
+      { "date": "2025-05-01", "roadmapScore": 7.7, "moralityIndex": 7.3, "socialEngagement": 9.3, "totalScore": 8.1 }
+    ]
+  },
+  {
+    "id": "tge-16",
+    "name": "TokenSwap",
+    "tgeDate": "2025-10-02",
+    "roadmapScore": 9.4,
+    "moralityIndex": 9.0,
+    "socialEngagement": 8.6,
+    "totalScore": 9.0,
+    "tags": ["DeFi", "DEX", "Trading"],
+    "scoreHistory": [
+      { "date": "2025-01-01", "roadmapScore": 7.8, "moralityIndex": 7.6, "socialEngagement": 7.1, "totalScore": 7.5 },
+      { "date": "2025-02-01", "roadmapScore": 8.4, "moralityIndex": 8.2, "socialEngagement": 7.7, "totalScore": 8.1 },
+      { "date": "2025-03-01", "roadmapScore": 8.9, "moralityIndex": 8.6, "socialEngagement": 8.2, "totalScore": 8.6 },
+      { "date": "2025-04-01", "roadmapScore": 9.2, "moralityIndex": 8.8, "socialEngagement": 8.4, "totalScore": 8.8 },
+      { "date": "2025-05-01", "roadmapScore": 9.4, "moralityIndex": 9.0, "socialEngagement": 8.6, "totalScore": 9.0 }
+    ]
+  },
+  {
+    "id": "tge-17",
+    "name": "CreatorDAO",
+    "tgeDate": "2025-10-08",
+    "roadmapScore": 8.3,
+    "moralityIndex": 8.1,
+    "socialEngagement": 9.5,
+    "totalScore": 8.6,
+    "tags": ["DAO", "Creator", "Content"],
+    "scoreHistory": [
+      { "date": "2025-01-01", "roadmapScore": 6.7, "moralityIndex": 6.6, "socialEngagement": 8.0, "totalScore": 7.1 },
+      { "date": "2025-02-01", "roadmapScore": 7.3, "moralityIndex": 7.2, "socialEngagement": 8.6, "totalScore": 7.7 },
+      { "date": "2025-03-01", "roadmapScore": 7.8, "moralityIndex": 7.7, "socialEngagement": 9.0, "totalScore": 8.2 },
+      { "date": "2025-04-01", "roadmapScore": 8.1, "moralityIndex": 7.9, "socialEngagement": 9.3, "totalScore": 8.4 },
+      { "date": "2025-05-01", "roadmapScore": 8.3, "moralityIndex": 8.1, "socialEngagement": 9.5, "totalScore": 8.6 }
+    ]
+  },
+  {
+    "id": "tge-18",
+    "name": "ChainOracle",
+    "tgeDate": "2025-10-15",
+    "roadmapScore": 9.1,
+    "moralityIndex": 8.8,
+    "socialEngagement": 7.6,
+    "totalScore": 8.5,
+    "tags": ["Infrastructure", "Oracle", "Data"],
+    "scoreHistory": [
+      { "date": "2025-01-01", "roadmapScore": 7.5, "moralityIndex": 7.3, "socialEngagement": 6.2, "totalScore": 7.0 },
+      { "date": "2025-02-01", "roadmapScore": 8.1, "moralityIndex": 7.9, "socialEngagement": 6.7, "totalScore": 7.6 },
+      { "date": "2025-03-01", "roadmapScore": 8.6, "moralityIndex": 8.4, "socialEngagement": 7.1, "totalScore": 8.0 },
+      { "date": "2025-04-01", "roadmapScore": 8.9, "moralityIndex": 8.6, "socialEngagement": 7.4, "totalScore": 8.3 },
+      { "date": "2025-05-01", "roadmapScore": 9.1, "moralityIndex": 8.8, "socialEngagement": 7.6, "totalScore": 8.5 }
+    ]
+  },
+  {
+    "id": "tge-19",
+    "name": "PlayToEarn Arena",
+    "tgeDate": "2025-10-22",
+    "roadmapScore": 7.5,
+    "moralityIndex": 7.2,
+    "socialEngagement": 8.9,
+    "totalScore": 7.9,
+    "tags": ["GameFi", "P2E", "Esports"],
+    "scoreHistory": [
+      { "date": "2025-01-01", "roadmapScore": 5.9, "moralityIndex": 5.7, "socialEngagement": 7.3, "totalScore": 6.3 },
+      { "date": "2025-02-01", "roadmapScore": 6.5, "moralityIndex": 6.3, "socialEngagement": 7.9, "totalScore": 6.9 },
+      { "date": "2025-03-01", "roadmapScore": 7.0, "moralityIndex": 6.8, "socialEngagement": 8.4, "totalScore": 7.4 },
+      { "date": "2025-04-01", "roadmapScore": 7.3, "moralityIndex": 7.0, "socialEngagement": 8.7, "totalScore": 7.7 },
+      { "date": "2025-05-01", "roadmapScore": 7.5, "moralityIndex": 7.2, "socialEngagement": 8.9, "totalScore": 7.9 }
+    ]
+  },
+  {
+    "id": "tge-20",
+    "name": "DeFi Vault",
+    "tgeDate": "2025-10-29",
+    "roadmapScore": 8.9,
+    "moralityIndex": 8.4,
+    "socialEngagement": 8.1,
+    "totalScore": 8.5,
+    "tags": ["DeFi", "Vault", "Yield"],
+    "scoreHistory": [
+      { "date": "2025-01-01", "roadmapScore": 7.3, "moralityIndex": 6.9, "socialEngagement": 6.6, "totalScore": 6.9 },
+      { "date": "2025-02-01", "roadmapScore": 7.9, "moralityIndex": 7.5, "socialEngagement": 7.2, "totalScore": 7.5 },
+      { "date": "2025-03-01", "roadmapScore": 8.4, "moralityIndex": 8.0, "socialEngagement": 7.6, "totalScore": 8.0 },
+      { "date": "2025-04-01", "roadmapScore": 8.7, "moralityIndex": 8.2, "socialEngagement": 7.9, "totalScore": 8.3 },
+      { "date": "2025-05-01", "roadmapScore": 8.9, "moralityIndex": 8.4, "socialEngagement": 8.1, "totalScore": 8.5 }
+    ]
   }
 ]
