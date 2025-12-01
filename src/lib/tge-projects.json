@@ -9,6 +9,12 @@
     "socialEngagement": 9.2,
     "totalScore": 8.5,
     "tags": ["GameFi", "P2E", "Metaverse"],
+    "trends": {
+      "roadmapScore": "up",
+      "moralityIndex": "up",
+      "socialEngagement": "up",
+      "totalScore": "up"
+    },
     "scoreHistory": [
       { "date": "2025-01-01", "roadmapScore": 6.5, "moralityIndex": 6.8, "socialEngagement": 7.2, "totalScore": 6.8 },
       { "date": "2025-02-01", "roadmapScore": 7.2, "moralityIndex": 7.1, "socialEngagement": 7.8, "totalScore": 7.4 },
@@ -26,6 +32,12 @@
     "socialEngagement": 7.8,
     "totalScore": 8.6,
     "tags": ["DeFi", "Lending", "Yield"],
+    "trends": {
+      "roadmapScore": "up",
+      "moralityIndex": "up",
+      "socialEngagement": "up",
+      "totalScore": "up"
+    },
     "scoreHistory": [
       { "date": "2025-01-01", "roadmapScore": 7.8, "moralityIndex": 7.2, "socialEngagement": 6.1, "totalScore": 7.1 },
       { "date": "2025-02-01", "roadmapScore": 8.3, "moralityIndex": 7.8, "socialEngagement": 6.8, "totalScore": 7.7 },
@@ -43,6 +55,12 @@
     "socialEngagement": 8.7,
     "totalScore": 8.1,
     "tags": ["GameFi", "NFT", "Social"],
+    "trends": {
+      "roadmapScore": "up",
+      "moralityIndex": "up",
+      "socialEngagement": "up",
+      "totalScore": "up"
+    },
     "scoreHistory": [
       { "date": "2025-01-01", "roadmapScore": 6.2, "moralityIndex": 7.5, "socialEngagement": 7.1, "totalScore": 6.9 },
       { "date": "2025-02-01", "roadmapScore": 6.8, "moralityIndex": 7.8, "socialEngagement": 7.8, "totalScore": 7.4 },
@@ -60,6 +78,12 @@
     "socialEngagement": 8.9,
     "totalScore": 9.2,
     "tags": ["Infrastructure", "Bridge", "DeFi"],
+    "trends": {
+      "roadmapScore": "up",
+      "moralityIndex": "up",
+      "socialEngagement": "up",
+      "totalScore": "up"
+    },
     "scoreHistory": [
       { "date": "2025-01-01", "roadmapScore": 8.2, "moralityIndex": 8.1, "socialEngagement": 7.5, "totalScore": 8.0 },
       { "date": "2025-02-01", "roadmapScore": 8.7, "moralityIndex": 8.6, "socialEngagement": 8.0, "totalScore": 8.5 },
@@ -77,6 +101,12 @@
     "socialEngagement": 9.4,
     "totalScore": 8.4,
     "tags": ["Social", "Creator", "Content"],
+    "trends": {
+      "roadmapScore": "up",
+      "moralityIndex": "up",
+      "socialEngagement": "up",
+      "totalScore": "up"
+    },
     "scoreHistory": [
       { "date": "2025-01-01", "roadmapScore": 6.8, "moralityIndex": 6.5, "socialEngagement": 7.8, "totalScore": 7.0 },
       { "date": "2025-02-01", "roadmapScore": 7.3, "moralityIndex": 6.9, "socialEngagement": 8.4, "totalScore": 7.5 },
@@ -94,6 +124,12 @@
     "socialEngagement": 7.5,
     "totalScore": 7.8,
     "tags": ["GameFi", "Strategy", "T2E"],
+    "trends": {
+      "roadmapScore": "up",
+      "moralityIndex": "up",
+      "socialEngagement": "neutral",
+      "totalScore": "up"
+    },
     "scoreHistory": [
       { "date": "2025-01-01", "roadmapScore": 6.0, "moralityIndex": 6.8, "socialEngagement": 6.2, "totalScore": 6.3 },
       { "date": "2025-02-01", "roadmapScore": 6.7, "moralityIndex": 7.2, "socialEngagement": 6.7, "totalScore": 6.9 },
@@ -111,6 +147,12 @@
     "socialEngagement": 8.4,
     "totalScore": 8.9,
     "tags": ["AI", "Data", "Utility"],
+    "trends": {
+      "roadmapScore": "up",
+      "moralityIndex": "up",
+      "socialEngagement": "up",
+      "totalScore": "up"
+    },
     "scoreHistory": [
       { "date": "2025-01-01", "roadmapScore": 7.5, "moralityIndex": 7.2, "socialEngagement": 6.8, "totalScore": 7.2 },
       { "date": "2025-02-01", "roadmapScore": 8.2, "moralityIndex": 7.8, "socialEngagement": 7.4, "totalScore": 7.8 },
@@ -128,6 +170,12 @@
     "socialEngagement": 7.2,
     "totalScore": 8.5,
     "tags": ["Privacy", "Security", "Infrastructure"],
+    "trends": {
+      "roadmapScore": "up",
+      "moralityIndex": "up",
+      "socialEngagement": "up",
+      "totalScore": "up"
+    },
     "scoreHistory": [
       { "date": "2025-01-01", "roadmapScore": 7.2, "moralityIndex": 8.0, "socialEngagement": 5.8, "totalScore": 7.0 },
       { "date": "2025-02-01", "roadmapScore": 7.9, "moralityIndex": 8.5, "socialEngagement": 6.2, "totalScore": 7.5 },
@@ -145,6 +193,12 @@
     "socialEngagement": 8.8,
     "totalScore": 8.6,
     "tags": ["Payments", "DeFi", "Utility"],
+    "trends": {
+      "roadmapScore": "up",
+      "moralityIndex": "up",
+      "socialEngagement": "up",
+      "totalScore": "up"
+    },
     "scoreHistory": [
       { "date": "2025-01-01", "roadmapScore": 7.0, "moralityIndex": 6.9, "socialEngagement": 7.2, "totalScore": 7.0 },
       { "date": "2025-02-01", "roadmapScore": 7.7, "moralityIndex": 7.4, "socialEngagement": 7.8, "totalScore": 7.6 },
@@ -162,6 +216,12 @@
     "socialEngagement": 9.0,
     "totalScore": 8.8,
     "tags": ["DAO", "Governance", "DeFi"],
+    "trends": {
+      "roadmapScore": "up",
+      "moralityIndex": "up",
+      "socialEngagement": "up",
+      "totalScore": "up"
+    },
     "scoreHistory": [
       { "date": "2025-01-01", "roadmapScore": 7.4, "moralityIndex": 7.1, "socialEngagement": 7.5, "totalScore": 7.3 },
       { "date": "2025-02-01", "roadmapScore": 8.0, "moralityIndex": 7.7, "socialEngagement": 8.1, "totalScore": 7.9 },
@@ -179,6 +239,12 @@
     "socialEngagement": 9.1,
     "totalScore": 8.3,
     "tags": ["GameFi", "Metaverse", "Social"],
+    "trends": {
+      "roadmapScore": "up",
+      "moralityIndex": "neutral",
+      "socialEngagement": "up",
+      "totalScore": "up"
+    },
     "scoreHistory": [
       { "date": "2025-01-01", "roadmapScore": 6.5, "moralityIndex": 6.2, "socialEngagement": 7.5, "totalScore": 6.7 },
       { "date": "2025-02-01", "roadmapScore": 7.1, "moralityIndex": 6.8, "socialEngagement": 8.1, "totalScore": 7.3 },
@@ -196,6 +262,12 @@
     "socialEngagement": 7.9,
     "totalScore": 8.7,
     "tags": ["DeFi", "Lending", "Protocol"],
+    "trends": {
+      "roadmapScore": "up",
+      "moralityIndex": "up",
+      "socialEngagement": "up",
+      "totalScore": "up"
+    },
     "scoreHistory": [
       { "date": "2025-01-01", "roadmapScore": 7.6, "moralityIndex": 7.5, "socialEngagement": 6.5, "totalScore": 7.2 },
       { "date": "2025-02-01", "roadmapScore": 8.2, "moralityIndex": 8.1, "socialEngagement": 7.0, "totalScore": 7.8 },
@@ -213,6 +285,12 @@
     "socialEngagement": 8.5,
     "totalScore": 8.0,
     "tags": ["NFT", "Marketplace", "Social"],
+    "trends": {
+      "roadmapScore": "up",
+      "moralityIndex": "up",
+      "socialEngagement": "up",
+      "totalScore": "up"
+    },
     "scoreHistory": [
       { "date": "2025-01-01", "roadmapScore": 6.3, "moralityIndex": 6.0, "socialEngagement": 7.0, "totalScore": 6.4 },
       { "date": "2025-02-01", "roadmapScore": 6.9, "moralityIndex": 6.6, "socialEngagement": 7.6, "totalScore": 7.0 },
@@ -230,6 +308,12 @@
     "socialEngagement": 8.2,
     "totalScore": 8.5,
     "tags": ["Staking", "DeFi", "Yield"],
+    "trends": {
+      "roadmapScore": "up",
+      "moralityIndex": "up",
+      "socialEngagement": "up",
+      "totalScore": "up"
+    },
     "scoreHistory": [
       { "date": "2025-01-01", "roadmapScore": 7.2, "moralityIndex": 7.1, "socialEngagement": 6.8, "totalScore": 7.0 },
       { "date": "2025-02-01", "roadmapScore": 7.8, "moralityIndex": 7.7, "socialEngagement": 7.3, "totalScore": 7.6 },
@@ -247,6 +331,12 @@
     "socialEngagement": 9.3,
     "totalScore": 8.1,
     "tags": ["GameFi", "VR", "Metaverse"],
+    "trends": {
+      "roadmapScore": "neutral",
+      "moralityIndex": "up",
+      "socialEngagement": "up",
+      "totalScore": "up"
+    },
     "scoreHistory": [
       { "date": "2025-01-01", "roadmapScore": 6.0, "moralityIndex": 5.8, "socialEngagement": 7.8, "totalScore": 6.5 },
       { "date": "2025-02-01", "roadmapScore": 6.7, "moralityIndex": 6.4, "socialEngagement": 8.4, "totalScore": 7.2 },
@@ -264,6 +354,12 @@
     "socialEngagement": 8.6,
     "totalScore": 9.0,
     "tags": ["DeFi", "DEX", "Trading"],
+    "trends": {
+      "roadmapScore": "up",
+      "moralityIndex": "up",
+      "socialEngagement": "up",
+      "totalScore": "up"
+    },
     "scoreHistory": [
       { "date": "2025-01-01", "roadmapScore": 7.8, "moralityIndex": 7.6, "socialEngagement": 7.1, "totalScore": 7.5 },
       { "date": "2025-02-01", "roadmapScore": 8.4, "moralityIndex": 8.2, "socialEngagement": 7.7, "totalScore": 8.1 },
@@ -281,6 +377,12 @@
     "socialEngagement": 9.5,
     "totalScore": 8.6,
     "tags": ["DAO", "Creator", "Content"],
+    "trends": {
+      "roadmapScore": "up",
+      "moralityIndex": "up",
+      "socialEngagement": "up",
+      "totalScore": "up"
+    },
     "scoreHistory": [
       { "date": "2025-01-01", "roadmapScore": 6.7, "moralityIndex": 6.6, "socialEngagement": 8.0, "totalScore": 7.1 },
       { "date": "2025-02-01", "roadmapScore": 7.3, "moralityIndex": 7.2, "socialEngagement": 8.6, "totalScore": 7.7 },
@@ -298,6 +400,12 @@
     "socialEngagement": 7.6,
     "totalScore": 8.5,
     "tags": ["Infrastructure", "Oracle", "Data"],
+    "trends": {
+      "roadmapScore": "up",
+      "moralityIndex": "up",
+      "socialEngagement": "up",
+      "totalScore": "up"
+    },
     "scoreHistory": [
       { "date": "2025-01-01", "roadmapScore": 7.5, "moralityIndex": 7.3, "socialEngagement": 6.2, "totalScore": 7.0 },
       { "date": "2025-02-01", "roadmapScore": 8.1, "moralityIndex": 7.9, "socialEngagement": 6.7, "totalScore": 7.6 },
@@ -315,6 +423,12 @@
     "socialEngagement": 8.9,
     "totalScore": 7.9,
     "tags": ["GameFi", "P2E", "Esports"],
+    "trends": {
+      "roadmapScore": "neutral",
+      "moralityIndex": "up",
+      "socialEngagement": "up",
+      "totalScore": "up"
+    },
     "scoreHistory": [
       { "date": "2025-01-01", "roadmapScore": 5.9, "moralityIndex": 5.7, "socialEngagement": 7.3, "totalScore": 6.3 },
       { "date": "2025-02-01", "roadmapScore": 6.5, "moralityIndex": 6.3, "socialEngagement": 7.9, "totalScore": 6.9 },
@@ -332,6 +446,12 @@
     "socialEngagement": 8.1,
     "totalScore": 8.5,
     "tags": ["DeFi", "Vault", "Yield"],
+    "trends": {
+      "roadmapScore": "up",
+      "moralityIndex": "up",
+      "socialEngagement": "up",
+      "totalScore": "up"
+    },
     "scoreHistory": [
       { "date": "2025-01-01", "roadmapScore": 7.3, "moralityIndex": 6.9, "socialEngagement": 6.6, "totalScore": 6.9 },
       { "date": "2025-02-01", "roadmapScore": 7.9, "moralityIndex": 7.5, "socialEngagement": 7.2, "totalScore": 7.5 },
