@@ -1,4 +1,4 @@
-
+import { Link } from 'react-router-dom';
 import { format } from 'date-fns';
 import { ArrowUp, ArrowDown } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
@@ -104,7 +104,14 @@ const TGETable = ({ projects, sort, onSort }: TGETableProps) => {
           {projects.length > 0 ? (
             projects.map(project => (
               <TableRow key={project.id} className="hover:bg-muted/50">
-                <TableCell className="font-medium">{project.name}</TableCell>
+                <TableCell className="font-medium">
+                  <Link 
+                    to={`/tge/${project.id}`}
+                    className="text-primary hover:underline"
+                  >
+                    {project.name}
+                  </Link>
+                </TableCell>
                 <TableCell>{format(new Date(project.tgeDate), 'dd MMM yyyy')}</TableCell>
                 <TableCell className="text-right">
                   <div className="flex items-center justify-end">
