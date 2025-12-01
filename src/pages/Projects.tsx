@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Calendar, TrendingUp, Clock, Filter, ArrowUpDown, ChevronDown, ChevronUp, LayoutGrid, Table2 } from 'lucide-react';
+import { ArrowRight, Calendar, TrendingUp, Clock, Filter, ArrowUpDown, ChevronDown, ChevronUp, LayoutGrid, Table2, Rocket } from 'lucide-react';
 import { differenceInDays, differenceInHours, differenceInMinutes, isPast } from 'date-fns';
 import Header from '../components/Header';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
@@ -193,6 +193,7 @@ const Projects = ({ embedded = false }: { embedded?: boolean }) => {
               </div>
               <Link to="/tge">
                 <Button variant="outline" size="sm" className="gap-2">
+                  <Rocket className="h-4 w-4" />
                   TFG
                   <ArrowRight className="h-4 w-4" />
                 </Button>
