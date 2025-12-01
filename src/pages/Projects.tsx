@@ -298,10 +298,6 @@ const Projects = ({ embedded = false }: { embedded?: boolean }) => {
                                 })}
                               </p>
                             </div>
-                            <div>
-                              <p className="text-xs text-muted-foreground mb-1">Countdown</p>
-                              <CountdownTimer targetDate={project.tgeDate} />
-                            </div>
                           </div>
 
                           <div className="grid grid-cols-3 gap-2 pt-3 border-t">
@@ -333,7 +329,6 @@ const Projects = ({ embedded = false }: { embedded?: boolean }) => {
                       <tr className="border-b">
                         <th className="px-4 py-3 text-left text-sm font-medium text-muted-foreground">Project</th>
                         <th className="px-4 py-3 text-left text-sm font-medium text-muted-foreground hidden sm:table-cell">TGE Date</th>
-                        <th className="px-4 py-3 text-left text-sm font-medium text-muted-foreground">Countdown</th>
                         <th className="px-4 py-3 text-left text-sm font-medium text-muted-foreground hidden lg:table-cell">Roadmap Score</th>
                         <th className="px-4 py-3 text-left text-sm font-medium text-muted-foreground hidden lg:table-cell">Morality Index</th>
                         <th className="px-4 py-3 text-left text-sm font-medium text-muted-foreground hidden lg:table-cell">Social Engagement</th>
@@ -362,9 +357,6 @@ const Projects = ({ embedded = false }: { embedded?: boolean }) => {
                                 day: 'numeric',
                                 year: 'numeric'
                               })}
-                            </td>
-                            <td className="px-4 py-3">
-                              <CountdownTimer targetDate={project.tgeDate} />
                             </td>
                             <td className="px-4 py-3 text-sm hidden lg:table-cell">{project.roadmapScore.toFixed(1)}</td>
                             <td className="px-4 py-3 text-sm hidden lg:table-cell">{project.moralityIndex.toFixed(1)}</td>
