@@ -194,7 +194,7 @@ const Projects = ({ embedded = false }: { embedded?: boolean }) => {
               <Link to="/tge">
                 <Button variant="outline" size="sm" className="gap-2">
                   <Rocket className="h-4 w-4" />
-                  TFG
+                  TGE
                   <ArrowRight className="h-4 w-4" />
                 </Button>
               </Link>
